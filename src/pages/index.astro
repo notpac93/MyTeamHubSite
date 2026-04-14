@@ -3,40 +3,55 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 import CtaCluster from '../components/CtaCluster.astro';
 import ProgramBoard from '../components/ProgramBoard.astro';
-import ProgramFlow from '../components/ProgramFlow.astro';
 import SectionIntro from '../components/SectionIntro.astro';
 import { homePage, primaryCta, secondaryCta } from '../data/site';
 
-const { hero, heroFlow, valueProps, steps, proof, family, cta } = homePage;
+const { hero, heroPill, quickChecks, valueProps, steps, proof, family, cta } = homePage;
 ---
 
 <BaseLayout title={homePage.title} description={homePage.description} pageName={homePage.pageName}>
   <section class="hero hero--home">
     <div class="hero__grid">
       <div class="hero__copy">
+        <div class="hero__pill" aria-label="Summary highlight">
+          <span class="hero__pill-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" role="presentation">
+              <path d="M13 2 6 13h5l-1 9 8-12h-5l1-8Z" fill="currentColor"></path>
+            </svg>
+          </span>
+          <span>{heroPill}</span>
+        </div>
         <p class="hero__eyebrow">{hero.eyebrow}</p>
         <h1>{hero.title}</h1>
         <p class="hero__lede">{hero.body}</p>
         <CtaCluster primary={primaryCta} secondary={secondaryCta} />
-
-        <ul class="hero__signal-list">
-          <li>Built around operator workflows</li>
-          <li>Structured for families to follow more easily</li>
-          <li>Designed for a cleaner rollout path</li>
-        </ul>
       </div>
 
       <div class="hero__visual-stack">
-        <ProgramFlow
-          eyebrow="How it comes together"
-          title="Move from scattered updates to one clearer family-facing flow"
-          operator={heroFlow.operator}
-          hubLabel={heroFlow.hubLabel}
-          hubTitle={heroFlow.hubTitle}
-          hubItems={heroFlow.hubItems}
-          family={heroFlow.family}
-        />
+        <ProgramBoard label="Illustrative operator view" title={proof.boardTitle} items={proof.boardItems} note={proof.note} />
+
+        <div class="surface-card surface-card--accent">
+          <p class="surface-card__eyebrow">What changes</p>
+          <h2>Less stitching. More clarity.</h2>
+          <p>MyTeam is positioned around a cleaner way to present the program details families and staff already depend on.</p>
+        </div>
       </div>
+    </div>
+  </section>
+
+  <section class="summary-strip" aria-label="Quick overview">
+    <div class="summary-strip__inner">
+      {quickChecks.map((item) => (
+        <article class="summary-strip__item">
+          <span class="summary-strip__check" aria-hidden="true">
+            <svg viewBox="0 0 24 24" role="presentation">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="m8 12.3 2.5 2.5L16.5 9"></path>
+            </svg>
+          </span>
+          <p>{item}</p>
+        </article>
+      ))}
     </div>
   </section>
 
@@ -44,8 +59,28 @@ const { hero, heroFlow, valueProps, steps, proof, family, cta } = homePage;
     <SectionIntro title={valueProps.title} body={valueProps.body} align="center" />
     <div class="card-grid card-grid--three">
       {valueProps.cards.map((card) => (
-        <article class="info-card">
+        <article class={`info-card info-card--highlight info-card--${card.tone ?? 'brand'}`}>
+          <span class="info-card__icon" aria-hidden="true">
+            {card.tone === 'brand' && (
+              <svg viewBox="0 0 24 24" role="presentation">
+                <path d="M4 7h16M4 12h16M4 17h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+              </svg>
+            )}
+            {card.tone === 'field' && (
+              <svg viewBox="0 0 24 24" role="presentation">
+                <path d="M5 8h14M5 12h10M5 16h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                <circle cx="18" cy="12" r="2" fill="currentColor"></circle>
+              </svg>
+            )}
+            {card.tone === 'accent' && (
+              <svg viewBox="0 0 24 24" role="presentation">
+                <path d="M12 4 14.5 9.5 20 12l-5.5 2.5L12 20l-2.5-5.5L4 12l5.5-2.5Z" fill="currentColor"></path>
+              </svg>
+            )}
+          </span>
+          {card.eyebrow && <p class="info-card__eyebrow">{card.eyebrow}</p>}
           <h3>{card.title}</h3>
+          {card.summary && <p class="info-card__summary">{card.summary}</p>}
           <p>{card.body}</p>
         </article>
       ))}
@@ -66,13 +101,17 @@ const { hero, heroFlow, valueProps, steps, proof, family, cta } = homePage;
   </section>
 
   <section class="content-section">
-    <div class="split-panel split-panel--balanced">
+    <div class="split-panel">
       <div>
         <SectionIntro eyebrow="Illustrative Proof" title={proof.title} body={proof.body} />
         <p class="section-note">{proof.note}</p>
       </div>
 
-      <ProgramBoard label="Illustrative operator view" title={proof.boardTitle} items={proof.boardItems} note={proof.note} />
+      <div class="surface-card surface-card--warm">
+        <p class="surface-card__eyebrow">Why it matters</p>
+        <h2>A more organized member experience creates less friction for everyone involved.</h2>
+        <p>A clearer structure, a cleaner presentation, and a more reliable place for key program information can make the whole experience easier to follow.</p>
+      </div>
     </div>
   </section>
 

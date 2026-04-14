@@ -11,21 +11,14 @@ export type CallToAction = {
 export type Card = {
   title: string;
   body: string;
+  eyebrow?: string;
+  summary?: string;
+  tone?: 'brand' | 'field' | 'accent';
 };
 
 export type Step = {
   title: string;
   body: string;
-};
-
-export type FlowGroup = {
-  label: string;
-  items: string[];
-};
-
-export type FeatureLane = {
-  label: string;
-  items: string[];
 };
 
 export type FaqItem = {
@@ -87,38 +80,36 @@ export const homePage = {
     body:
       'MyTeam is built for sports programs that want a more organized way to handle schedules, registration, payments, and updates without sending families across multiple tools.',
   },
-  heroFlow: {
-    operator: {
-      label: 'Operators manage',
-      items: ['Schedules', 'Registration', 'Payments', 'Updates'],
-    } satisfies FlowGroup,
-    hubLabel: 'MyTeam',
-    hubTitle: 'One clearer program home',
-    hubItems: [
-      'Bring key program details into one consistent flow',
-      'Keep staff-facing information easier to maintain',
-      'Give families a more reliable place to check next steps',
-    ],
-    family: {
-      label: 'Families understand',
-      items: ['Where to look', 'What changed', 'What to do next'],
-    } satisfies FlowGroup,
-  },
+  heroPill: 'A simpler way to present the information your program already manages',
+  quickChecks: [
+    'Built around operator workflows',
+    'Easier for families to follow',
+    'A cleaner rollout path',
+  ],
   valueProps: {
     title: 'One place for the work your program already manages',
     body:
       'MyTeam helps operators present key program information more clearly and keep day-to-day coordination easier to follow.',
     cards: [
       {
+        eyebrow: 'Operations',
         title: 'Clearer Program Operations',
+        summary: 'Keep weekly coordination easier to manage.',
+        tone: 'brand',
         body: 'Bring the essential parts of program administration into a more consistent experience for staff and families.',
       },
       {
+        eyebrow: 'Family Experience',
         title: 'Simpler Family Experience',
+        summary: 'Give families a quicker way to understand what matters.',
+        tone: 'field',
         body: 'Give families one place to check the information they need instead of piecing it together across separate channels.',
       },
       {
+        eyebrow: 'Program Presence',
         title: 'Stronger Program Presence',
+        summary: 'Present a cleaner, more recognizable public-facing experience.',
+        tone: 'accent',
         body: 'Present your program in a more polished way that feels intentional from first visit to ongoing use.',
       },
     ] satisfies Card[],
@@ -195,103 +186,48 @@ export const featuresPage = {
   sections: [
     {
       id: 'publishing',
-      badge: 'CP',
       title: 'Content publishing support',
       body: 'Keep your program information current with an experience designed to make updates easier to manage and easier to follow.',
       highlights: [
         'A clearer structure for public-facing program details',
         'Fewer scattered places to maintain core information',
       ],
-      lanes: [
-        {
-          label: 'Operators',
-          items: ['Update program details in one clearer flow', 'Keep pages and key information more consistent'],
-        },
-        {
-          label: 'Families',
-          items: ['Find current information more easily', 'See a cleaner structure for what matters most'],
-        },
-      ] satisfies FeatureLane[],
     },
     {
       id: 'schedules',
-      badge: 'SE',
       title: 'Schedules and events',
       body: 'Organize schedules and event information in a way that is easier for staff to maintain and easier for families to reference.',
       highlights: [
         'A more consistent place for timing and event details',
         'Easier reference points for staff and families',
       ],
-      lanes: [
-        {
-          label: 'Operators',
-          items: ['Post dates and event details more consistently', 'Maintain timing updates without extra handoffs'],
-        },
-        {
-          label: 'Families',
-          items: ['Check schedules in one clearer place', 'Follow the same event flow week to week'],
-        },
-      ] satisfies FeatureLane[],
     },
     {
       id: 'registration',
-      badge: 'RP',
       title: 'Registration and payment support',
       body: 'Support key signup and payment workflows in a more consistent program-facing experience.',
       highlights: [
         'A cleaner path for registration-related next steps',
         'A more coordinated place for payment-related expectations',
       ],
-      lanes: [
-        {
-          label: 'Operators',
-          items: ['Guide sign-up steps more clearly', 'Set payment-related expectations in one flow'],
-        },
-        {
-          label: 'Families',
-          items: ['See where to register first', 'Understand the next action more quickly'],
-        },
-      ] satisfies FeatureLane[],
     },
     {
       id: 'communication',
-      badge: 'RC',
       title: 'Rosters and communication support',
       body: 'Help your program keep the right people aligned with a clearer structure for team information and updates.',
       highlights: [
         'More consistent presentation of team-facing information',
         'Clearer update flows for operators and families',
       ],
-      lanes: [
-        {
-          label: 'Operators',
-          items: ['Keep rosters and updates aligned', 'Present team information more consistently'],
-        },
-        {
-          label: 'Families',
-          items: ['Follow updates in one clearer flow', 'Stay aligned with the right team details'],
-        },
-      ] satisfies FeatureLane[],
     },
     {
       id: 'branding',
-      badge: 'BP',
       title: 'Brand presence',
       body: 'Present your program with a more recognizable look and feel so the experience feels connected to your organization.',
       highlights: [
         'A stronger sense of program identity',
         'A more connected experience from first visit onward',
       ],
-      lanes: [
-        {
-          label: 'Operators',
-          items: ['Present one recognizable program experience', 'Create a more connected look from first visit onward'],
-        },
-        {
-          label: 'Families',
-          items: ['Recognize the program more quickly', 'Move through a more polished public-facing flow'],
-        },
-      ] satisfies FeatureLane[],
     },
   ],
   proof: {
@@ -326,11 +262,6 @@ export const savingsPage = {
     afterLabel: 'With a more unified program experience',
     afterBody:
       'Program information is easier to present, easier to maintain, and easier for families to follow in one consistent flow.',
-  },
-  systems: {
-    connectorLabel: 'A clearer operating flow',
-    beforeNodes: ['Schedule page', 'Registration form', 'Payment instructions', 'Update threads'],
-    afterNodes: ['Program details', 'Schedules', 'Registration and payments', 'Updates and next steps'],
   },
   sprawl: {
     title: 'Reduce tool sprawl where it matters most',
@@ -405,19 +336,15 @@ export const setupFaqPage = {
       body: 'Check the experience carefully so the public-facing presentation is consistent before rollout.',
     },
   ] satisfies Step[],
-  rolloutNote:
-    'Use this page to answer fit, rollout, and handoff questions before implementation details become launch blockers.',
   experience: {
     title: 'Built for both sides of the experience',
     operator: {
       title: 'For operators',
       body: 'MyTeam is intended to support the day-to-day coordination work that keeps a program running.',
-      points: ['Confirm program details', 'Organize the staff-facing flow', 'Review launch readiness'],
     },
     family: {
       title: 'For families',
       body: 'The family side should feel easier to follow, easier to trust, and easier to act on when information is presented consistently.',
-      points: ['Know where to look first', 'See consistent information', 'Understand what to do next'],
     },
   },
   trust: {

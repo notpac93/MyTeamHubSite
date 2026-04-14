@@ -3,10 +3,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 import CtaCluster from '../components/CtaCluster.astro';
 import SectionIntro from '../components/SectionIntro.astro';
-import SystemCompare from '../components/SystemCompare.astro';
 import { primaryCta, savingsPage, secondaryCta } from '../data/site';
 
-const { hero, comparison, systems, sprawl, proof, cta } = savingsPage;
+const { hero, comparison, sprawl, proof, cta } = savingsPage;
 ---
 
 <BaseLayout title={savingsPage.title} description={savingsPage.description} pageName={savingsPage.pageName}>
@@ -29,15 +28,16 @@ const { hero, comparison, systems, sprawl, proof, cta } = savingsPage;
 
   <section class="content-section">
     <SectionIntro title={comparison.title} align="center" />
-    <SystemCompare
-      beforeLabel={comparison.beforeLabel}
-      beforeSummary={comparison.beforeBody}
-      beforeItems={systems.beforeNodes}
-      connectorLabel={systems.connectorLabel}
-      afterLabel={comparison.afterLabel}
-      afterSummary={comparison.afterBody}
-      afterItems={systems.afterNodes}
-    />
+    <div class="comparison-grid">
+      <article class="comparison-card comparison-card--before">
+        <p class="comparison-card__label">{comparison.beforeLabel}</p>
+        <p>{comparison.beforeBody}</p>
+      </article>
+      <article class="comparison-card comparison-card--after">
+        <p class="comparison-card__label">{comparison.afterLabel}</p>
+        <p>{comparison.afterBody}</p>
+      </article>
+    </div>
   </section>
 
   <section class="content-section content-section--tint">

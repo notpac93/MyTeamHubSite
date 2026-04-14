@@ -2,7 +2,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 import CtaCluster from '../components/CtaCluster.astro';
-import FeatureVisual from '../components/FeatureVisual.astro';
 import SectionIntro from '../components/SectionIntro.astro';
 import { featuresPage, primaryCta, secondaryCta } from '../data/site';
 
@@ -40,7 +39,11 @@ const { hero, indexLinks, sections, proof, cta } = featuresPage;
             </ul>
           </div>
 
-          <FeatureVisual badge={section.badge} title={section.title} lanes={section.lanes} />
+          <div class="surface-card surface-card--feature">
+            <p class="surface-card__eyebrow">Focused support</p>
+            <h2>{section.title}</h2>
+            <p>{section.body}</p>
+          </div>
         </article>
       ))}
     </div>
@@ -50,13 +53,9 @@ const { hero, indexLinks, sections, proof, cta } = featuresPage;
     <div class="split-panel split-panel--balanced">
       <SectionIntro eyebrow="Proof Block" title={proof.title} body={proof.body} />
       <div class="surface-card surface-card--accent">
-        <p class="surface-card__eyebrow">What becomes clearer</p>
-        <h2>Show the workflows in a way staff and families can understand quickly.</h2>
-        <ul class="surface-list">
-          <li>What the program needs to publish</li>
-          <li>What families need to reference</li>
-          <li>What staff need to keep current</li>
-        </ul>
+        <p class="surface-card__eyebrow">What this page does</p>
+        <h2>Give operators and families a clearer view of the workflows they rely on.</h2>
+        <p>Each capability area should be easy to scan, easy to understand, and connected to the day-to-day work programs already manage.</p>
       </div>
     </div>
   </section>
