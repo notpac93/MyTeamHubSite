@@ -1,0 +1,19 @@
+---
+type Link = {
+  label: string;
+  href: string;
+};
+
+interface Props {
+  primary: Link;
+  secondary?: Link;
+  className?: string;
+}
+
+const { primary, secondary, className = '' } = Astro.props;
+---
+
+<div class={`cta-cluster ${className}`.trim()}>
+  <a class="button button--primary" href={primary.href}>{primary.label}</a>
+  {secondary && <a class="button button--secondary" href={secondary.href}>{secondary.label}</a>}
+</div>

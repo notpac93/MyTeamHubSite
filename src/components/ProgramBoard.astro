@@ -1,0 +1,26 @@
+---
+interface Props {
+  label: string;
+  title: string;
+  items: string[];
+  note?: string;
+}
+
+const { label, title, items, note } = Astro.props;
+---
+
+<aside class="program-board" aria-label={label}>
+  <div class="program-board__chrome">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <p class="program-board__label">{label}</p>
+  <h3>{title}</h3>
+  <ul class="program-board__list">
+    {items.map((item) => (
+      <li>{item}</li>
+    ))}
+  </ul>
+  {note && <p class="program-board__note">{note}</p>}
+</aside>

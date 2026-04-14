@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import CtaCluster from '../components/CtaCluster.astro';
+import FaqList from '../components/FaqList.astro';
+import SectionIntro from '../components/SectionIntro.astro';
+import { primaryCta, secondaryCta, setupFaqPage } from '../data/site';
+
+const { hero, audiences, setupSteps, experience, trust, faqs, cta } = setupFaqPage;
+---
+
+<BaseLayout title={setupFaqPage.title} description={setupFaqPage.description} pageName={setupFaqPage.pageName}>
+  <section class="hero hero--inner">
+    <div class="hero__grid hero__grid--single">
+      <div class="hero__copy hero__copy--wide">
+        <p class="hero__eyebrow">{hero.eyebrow}</p>
+        <h1>{hero.title}</h1>
+        <p class="hero__lede">{hero.body}</p>
+        <CtaCluster primary={primaryCta} secondary={secondaryCta} />
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <SectionIntro title="Who this is for" body={hero.body} align="center" />
+    <div class="card-grid card-grid--three">
+      {audiences.map((card) => (
+        <article class="info-card">
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="content-section content-section--tint" id="setup-steps">
+    <SectionIntro title="A simple rollout path" body="Use this page to answer fit and rollout questions before implementation details become launch blockers." />
+    <div class="step-grid">
+      {setupSteps.map((step, index) => (
+        <article class="step-card">
+          <span class="step-card__index">0{index + 1}</span>
+          <h3>{step.title}</h3>
+          <p>{step.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="comparison-grid comparison-grid--wide">
+      <article class="comparison-card comparison-card--neutral">
+        <p class="comparison-card__label">{experience.operator.title}</p>
+        <p>{experience.operator.body}</p>
+      </article>
+      <article class="comparison-card comparison-card--neutral">
+        <p class="comparison-card__label">{experience.family.title}</p>
+        <p>{experience.family.body}</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="content-section content-section--contrast">
+    <div class="split-panel split-panel--balanced">
+      <SectionIntro eyebrow="Trust" title={trust.title} body={trust.body} />
+      <ul class="check-list check-list--contrast">
+        {trust.bullets.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <SectionIntro title="Common questions before rollout" />
+    <FaqList items={faqs} />
+  </section>
+
+  <CtaBanner eyebrow={cta.eyebrow} title={cta.title} body={cta.body} primary={primaryCta} secondary={secondaryCta} />
+</BaseLayout>
