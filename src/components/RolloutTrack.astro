@@ -1,0 +1,19 @@
+---
+import type { Step } from '../data/site';
+
+interface Props {
+  items: Step[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="rollout-track" aria-label="Rollout path">
+  {items.map((item, index) => (
+    <article class="rollout-track__step">
+      <span class="rollout-track__index">0{index + 1}</span>
+      <h3>{item.title}</h3>
+      <p>{item.body}</p>
+    </article>
+  ))}
+</div>

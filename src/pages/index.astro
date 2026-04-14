@@ -3,10 +3,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 import CtaCluster from '../components/CtaCluster.astro';
 import ProgramBoard from '../components/ProgramBoard.astro';
+import ProgramFlow from '../components/ProgramFlow.astro';
 import SectionIntro from '../components/SectionIntro.astro';
 import { homePage, primaryCta, secondaryCta } from '../data/site';
 
-const { hero, valueProps, steps, proof, family, cta } = homePage;
+const { hero, heroFlow, valueProps, steps, proof, family, cta } = homePage;
 ---
 
 <BaseLayout title={homePage.title} description={homePage.description} pageName={homePage.pageName}>
@@ -26,13 +27,15 @@ const { hero, valueProps, steps, proof, family, cta } = homePage;
       </div>
 
       <div class="hero__visual-stack">
-        <ProgramBoard label="Illustrative operator view" title={proof.boardTitle} items={proof.boardItems} note={proof.note} />
-
-        <div class="surface-card surface-card--accent">
-          <p class="surface-card__eyebrow">What changes</p>
-          <h2>Less stitching. More clarity.</h2>
-          <p>MyTeam is positioned around a cleaner way to present the program details families and staff already depend on.</p>
-        </div>
+        <ProgramFlow
+          eyebrow="How it comes together"
+          title="Move from scattered updates to one clearer family-facing flow"
+          operator={heroFlow.operator}
+          hubLabel={heroFlow.hubLabel}
+          hubTitle={heroFlow.hubTitle}
+          hubItems={heroFlow.hubItems}
+          family={heroFlow.family}
+        />
       </div>
     </div>
   </section>
@@ -63,17 +66,13 @@ const { hero, valueProps, steps, proof, family, cta } = homePage;
   </section>
 
   <section class="content-section">
-    <div class="split-panel">
+    <div class="split-panel split-panel--balanced">
       <div>
         <SectionIntro eyebrow="Illustrative Proof" title={proof.title} body={proof.body} />
         <p class="section-note">{proof.note}</p>
       </div>
 
-      <div class="surface-card surface-card--warm">
-        <p class="surface-card__eyebrow">Why it matters</p>
-        <h2>A more organized member experience creates less friction for everyone involved.</h2>
-        <p>That does not require louder claims. It requires a clearer structure, a cleaner presentation, and a more reliable place for key program information to live.</p>
-      </div>
+      <ProgramBoard label="Illustrative operator view" title={proof.boardTitle} items={proof.boardItems} note={proof.note} />
     </div>
   </section>
 

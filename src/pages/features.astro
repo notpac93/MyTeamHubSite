@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 import CtaCluster from '../components/CtaCluster.astro';
+import FeatureVisual from '../components/FeatureVisual.astro';
 import SectionIntro from '../components/SectionIntro.astro';
 import { featuresPage, primaryCta, secondaryCta } from '../data/site';
 
@@ -39,11 +40,7 @@ const { hero, indexLinks, sections, proof, cta } = featuresPage;
             </ul>
           </div>
 
-          <div class="surface-card surface-card--feature">
-            <p class="surface-card__eyebrow">Focused support</p>
-            <h2>{section.title}</h2>
-            <p>{section.body}</p>
-          </div>
+          <FeatureVisual badge={section.badge} title={section.title} lanes={section.lanes} />
         </article>
       ))}
     </div>
@@ -53,9 +50,13 @@ const { hero, indexLinks, sections, proof, cta } = featuresPage;
     <div class="split-panel split-panel--balanced">
       <SectionIntro eyebrow="Proof Block" title={proof.title} body={proof.body} />
       <div class="surface-card surface-card--accent">
-        <p class="surface-card__eyebrow">Operator-first principle</p>
-        <h2>Explain the capability categories clearly. Do not over-perform the product with the page itself.</h2>
-        <p>This site should make the workflows understandable without falling back into app-like demo theater or repetitive screenshot bands.</p>
+        <p class="surface-card__eyebrow">What becomes clearer</p>
+        <h2>Show the workflows in a way staff and families can understand quickly.</h2>
+        <ul class="surface-list">
+          <li>What the program needs to publish</li>
+          <li>What families need to reference</li>
+          <li>What staff need to keep current</li>
+        </ul>
       </div>
     </div>
   </section>

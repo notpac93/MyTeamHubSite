@@ -1,0 +1,39 @@
+---
+interface Props {
+  beforeLabel: string;
+  beforeSummary: string;
+  beforeItems: string[];
+  connectorLabel: string;
+  afterLabel: string;
+  afterSummary: string;
+  afterItems: string[];
+}
+
+const { beforeLabel, beforeSummary, beforeItems, connectorLabel, afterLabel, afterSummary, afterItems } = Astro.props;
+---
+
+<div class="system-compare" aria-label={`${beforeLabel} compared with ${afterLabel}`}>
+  <section class="system-compare__column system-compare__column--before">
+    <p class="system-compare__eyebrow">{beforeLabel}</p>
+    <p class="system-compare__summary">{beforeSummary}</p>
+    <ul class="system-compare__nodes">
+      {beforeItems.map((item) => (
+        <li>{item}</li>
+      ))}
+    </ul>
+  </section>
+
+  <div class="system-compare__connector">
+    <span>{connectorLabel}</span>
+  </div>
+
+  <section class="system-compare__column system-compare__column--after">
+    <p class="system-compare__eyebrow">{afterLabel}</p>
+    <p class="system-compare__summary">{afterSummary}</p>
+    <ul class="system-compare__nodes system-compare__nodes--after">
+      {afterItems.map((item) => (
+        <li>{item}</li>
+      ))}
+    </ul>
+  </section>
+</div>

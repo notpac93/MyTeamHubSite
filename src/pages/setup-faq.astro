@@ -3,10 +3,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 import CtaCluster from '../components/CtaCluster.astro';
 import FaqList from '../components/FaqList.astro';
+import RolloutTrack from '../components/RolloutTrack.astro';
 import SectionIntro from '../components/SectionIntro.astro';
 import { primaryCta, secondaryCta, setupFaqPage } from '../data/site';
 
-const { hero, audiences, setupSteps, experience, trust, faqs, cta } = setupFaqPage;
+const { hero, audiences, setupSteps, rolloutNote, experience, trust, faqs, cta } = setupFaqPage;
 ---
 
 <BaseLayout title={setupFaqPage.title} description={setupFaqPage.description} pageName={setupFaqPage.pageName}>
@@ -34,27 +35,30 @@ const { hero, audiences, setupSteps, experience, trust, faqs, cta } = setupFaqPa
   </section>
 
   <section class="content-section content-section--tint" id="setup-steps">
-    <SectionIntro title="A simple rollout path" body="Use this page to answer fit and rollout questions before implementation details become launch blockers." />
-    <div class="step-grid">
-      {setupSteps.map((step, index) => (
-        <article class="step-card">
-          <span class="step-card__index">0{index + 1}</span>
-          <h3>{step.title}</h3>
-          <p>{step.body}</p>
-        </article>
-      ))}
-    </div>
+    <SectionIntro title="A simple rollout path" body={rolloutNote} />
+    <RolloutTrack items={setupSteps} />
   </section>
 
   <section class="content-section">
-    <div class="comparison-grid comparison-grid--wide">
-      <article class="comparison-card comparison-card--neutral">
+    <SectionIntro title={experience.title} />
+    <div class="experience-grid">
+      <article class="experience-panel experience-panel--operator">
         <p class="comparison-card__label">{experience.operator.title}</p>
         <p>{experience.operator.body}</p>
+        <ul class="surface-list">
+          {experience.operator.points.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
       </article>
-      <article class="comparison-card comparison-card--neutral">
+      <article class="experience-panel experience-panel--family">
         <p class="comparison-card__label">{experience.family.title}</p>
         <p>{experience.family.body}</p>
+        <ul class="surface-list">
+          {experience.family.points.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
       </article>
     </div>
   </section>
