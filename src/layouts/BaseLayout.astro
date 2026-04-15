@@ -10,7 +10,22 @@ interface Props {
 
 const { title, description, pageName = 'default' } = Astro.props;
 const pathname = Astro.url.pathname;
-const homeHref = import.meta.env.BASE_URL;
+const toStaticFile = (value: string) => {
+  const [pathOnly] = value.split('#');
+
+  if (pathOnly === '' || pathOnly === '/') {
+    return 'index.html';
+  }
+
+  if (pathOnly.endsWith('.html')) {
+    return pathOnly.replace(/^\//, '');
+  }
+
+  return `${pathOnly.replace(/^\/+|\/+$/g, '')}.html`;
+};
+
+const homeHref = navigation[0]?.href ?? 'index.html';
+const currentFile = toStaticFile(pathname);
 ---
 
 <!doctype html>
@@ -33,7 +48,7 @@ const homeHref = import.meta.env.BASE_URL;
 
           <nav class="site-nav" aria-label="Primary">
             {navigation.map((item) => {
-              const active = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href));
+              const active = toStaticFile(item.href) === currentFile;
 
               return (
                 <a class={`site-nav__link ${active ? 'is-active' : ''}`} href={item.href} aria-current={active ? 'page' : undefined}>

@@ -2,17 +2,21 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 import CtaCluster from '../components/CtaCluster.astro';
-import ProgramBoard from '../components/ProgramBoard.astro';
+import PhoneMockup from '../components/PhoneMockup.astro';
 import SectionIntro from '../components/SectionIntro.astro';
 import { homePage, primaryCta, secondaryCta } from '../data/site';
 
-const { hero, heroPill, quickChecks, valueProps, workflows, proof, family, cta } = homePage;
+const { hero, heroPill, quickChecks, heroVisuals, results, steps, showcase, cta } = homePage;
 ---
 
 <BaseLayout title={homePage.title} description={homePage.description} pageName={homePage.pageName}>
   <section class="hero hero--home">
-    <div class="hero__grid">
-      <div class="hero__copy">
+    <div class="hero__grid hero__grid--home">
+      <div class="hero__device hero__device--left">
+        <PhoneMockup {...heroVisuals[0]} />
+      </div>
+
+      <div class="hero__copy hero__copy--hero-home">
         <div class="hero__pill" aria-label="Summary highlight">
           <span class="hero__pill-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" role="presentation">
@@ -24,63 +28,45 @@ const { hero, heroPill, quickChecks, valueProps, workflows, proof, family, cta }
         <p class="hero__eyebrow">{hero.eyebrow}</p>
         <h1>{hero.title}</h1>
         <p class="hero__lede">{hero.body}</p>
+        <ul class="hero__signal-list">
+          {quickChecks.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
         <CtaCluster primary={primaryCta} secondary={secondaryCta} />
       </div>
 
-      <div class="hero__visual-stack">
-        <ProgramBoard label="Illustrative operator view" title={proof.boardTitle} items={proof.boardItems} note={proof.note} />
-
-        <div class="surface-card surface-card--accent">
-          <p class="surface-card__eyebrow">What gets simpler</p>
-          <h2>Publish once. Guide the next step. Keep updates in the same flow.</h2>
-          <p>That structure gives staff fewer moving parts to manage and gives families fewer places to check.</p>
-        </div>
+      <div class="hero__device hero__device--right">
+        <PhoneMockup {...heroVisuals[1]} />
       </div>
-    </div>
-  </section>
-
-  <section class="summary-strip" aria-label="Quick overview">
-    <div class="summary-strip__inner">
-      {quickChecks.map((item) => (
-        <article class="summary-strip__item">
-          <span class="summary-strip__check" aria-hidden="true">
-            <svg viewBox="0 0 24 24" role="presentation">
-              <circle cx="12" cy="12" r="10"></circle>
-              <path d="m8 12.3 2.5 2.5L16.5 9"></path>
-            </svg>
-          </span>
-          <p>{item}</p>
-        </article>
-      ))}
     </div>
   </section>
 
   <section class="content-section">
-    <SectionIntro title={valueProps.title} body={valueProps.body} align="center" />
-    <div class="card-grid card-grid--three">
-      {valueProps.cards.map((card) => (
-        <article class={`info-card info-card--highlight info-card--${card.tone ?? 'brand'}`}>
-          <span class="info-card__icon" aria-hidden="true">
+    <SectionIntro eyebrow="Real Results" title={results.title} body={results.body} align="center" />
+    <div class="result-grid">
+      {results.cards.map((card) => (
+        <article class={`result-card result-card--${card.tone ?? 'brand'}`}>
+          <span class="result-card__icon" aria-hidden="true">
             {card.tone === 'brand' && (
               <svg viewBox="0 0 24 24" role="presentation">
-                <path d="M4 7h16M4 12h16M4 17h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                <path d="M5 12h14M12 5v14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
               </svg>
             )}
             {card.tone === 'field' && (
               <svg viewBox="0 0 24 24" role="presentation">
-                <path d="M5 8h14M5 12h10M5 16h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
-                <circle cx="18" cy="12" r="2" fill="currentColor"></circle>
+                <path d="M7 12h10M12 7v10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2"></circle>
               </svg>
             )}
             {card.tone === 'accent' && (
               <svg viewBox="0 0 24 24" role="presentation">
-                <path d="M12 4 14.5 9.5 20 12l-5.5 2.5L12 20l-2.5-5.5L4 12l5.5-2.5Z" fill="currentColor"></path>
+                <path d="m12 3 2.7 5.4 6 0.9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.3l6-0.9Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
               </svg>
             )}
           </span>
-          {card.eyebrow && <p class="info-card__eyebrow">{card.eyebrow}</p>}
+          <p class="result-card__value">{card.value}</p>
           <h3>{card.title}</h3>
-          {card.summary && <p class="info-card__summary">{card.summary}</p>}
           <p>{card.body}</p>
         </article>
       ))}
@@ -88,55 +74,64 @@ const { hero, heroPill, quickChecks, valueProps, workflows, proof, family, cta }
   </section>
 
   <section class="content-section content-section--tint">
-    <SectionIntro title={workflows.title} body={workflows.body} />
-    <div class="workflow-grid">
-      {workflows.items.map((workflow) => (
-        <article class={`workflow-card workflow-card--${workflow.tone ?? 'brand'}`}>
-          <div class="workflow-card__top">
-            <div>
-              {workflow.eyebrow && <p class="info-card__eyebrow">{workflow.eyebrow}</p>}
-            </div>
-            {workflow.tag && <span class="workflow-card__tag">{workflow.tag}</span>}
-          </div>
-          <h3>{workflow.title}</h3>
-          <p class="workflow-card__benefit">{workflow.benefit}</p>
-          <p>{workflow.body}</p>
-          <ul class="workflow-card__list">
-            {workflow.bullets.map((item) => (
-              <li>{item}</li>
-            ))}
-          </ul>
+    <SectionIntro eyebrow="How It Works" title={steps.title} body={steps.body} align="center" />
+    <div class="process-grid">
+      {steps.items.map((step, index) => (
+        <article class="process-card">
+          <span class="process-card__number">0{index + 1}</span>
+          <span class="process-card__icon" aria-hidden="true">
+            {index === 0 && (
+              <svg viewBox="0 0 24 24" role="presentation">
+                <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 8a7 7 0 0 1 14 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                <path d="M19 8h4M21 6v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+              </svg>
+            )}
+            {index === 1 && (
+              <svg viewBox="0 0 24 24" role="presentation">
+                <rect x="7" y="3" width="10" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"></rect>
+                <path d="M10 7h4M9 17h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+              </svg>
+            )}
+            {index === 2 && (
+              <svg viewBox="0 0 24 24" role="presentation">
+                <path d="M4 12h16M12 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            )}
+          </span>
+          <h3>{step.title}</h3>
+          <p>{step.body}</p>
         </article>
       ))}
     </div>
   </section>
 
   <section class="content-section">
-    <div class="split-panel">
+    <div class="showcase-layout">
       <div>
-        <SectionIntro eyebrow="Illustrative Proof" title={proof.title} body={proof.body} />
-        <p class="section-note">{proof.note}</p>
+        <SectionIntro eyebrow="Powered By MyTeam" title={showcase.title} body={showcase.body} />
+        <ul class="showcase-list">
+          {showcase.bullets.map((item) => (
+            <li>
+              <span class="showcase-list__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="presentation">
+                  <path d="m5 12 4.2 4.2L19 6.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </span>
+              <div>
+                <h3 class="showcase-list__title">{item.title}</h3>
+                <p class="showcase-list__body">{item.body}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <p class="section-note">{showcase.note}</p>
       </div>
 
-      <div class="surface-card surface-card--warm">
-        <p class="surface-card__eyebrow">Why it works</p>
-        <h2>Less re-entry. Less explaining. Less chasing.</h2>
-        <p>When setup, signup, and weekly updates live in the same system, staff do not have to rebuild context every time something changes.</p>
+      <div class="showcase__visual">
+        <PhoneMockup {...showcase.mockup} />
+        <div class="showcase__badge showcase__badge--top">Your brand first</div>
+        <div class="showcase__badge showcase__badge--bottom">Schedules, signup, updates</div>
       </div>
-    </div>
-  </section>
-
-  <section class="content-section content-section--contrast">
-    <div class="split-panel split-panel--balanced">
-      <div>
-        <SectionIntro eyebrow="Family Experience" title={family.title} body={family.body} />
-      </div>
-
-      <ul class="check-list">
-        {family.bullets.map((item) => (
-          <li>{item}</li>
-        ))}
-      </ul>
     </div>
   </section>
 

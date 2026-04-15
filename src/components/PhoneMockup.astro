@@ -1,0 +1,42 @@
+---
+interface Props {
+  label: string;
+  title: string;
+  items: string[];
+  action?: string;
+  theme?: 'light' | 'dark';
+  tone?: 'brand' | 'field' | 'accent';
+  tilt?: 'left' | 'right' | 'none';
+}
+
+const {
+  label,
+  title,
+  items,
+  action,
+  theme = 'light',
+  tone = 'brand',
+  tilt = 'none',
+} = Astro.props;
+---
+
+<div class={`phone-mockup phone-mockup--${theme} phone-mockup--${tone} phone-mockup--${tilt}`} aria-label={label}>
+  <div class="phone-mockup__shell">
+    <div class="phone-mockup__notch" aria-hidden="true"></div>
+    <div class="phone-mockup__screen">
+      <p class="phone-mockup__label">{label}</p>
+      <h3>{title}</h3>
+
+      <div class="phone-mockup__rows">
+        {items.map((item) => (
+          <div class="phone-mockup__row">
+            <span class="phone-mockup__row-dot" aria-hidden="true"></span>
+            <span>{item}</span>
+          </div>
+        ))}
+      </div>
+
+      {action && <div class="phone-mockup__action">{action}</div>}
+    </div>
+  </div>
+</div>

@@ -36,6 +36,23 @@ export type WorkflowCard = {
   tone?: 'brand' | 'field' | 'accent';
 };
 
+export type ResultCard = {
+  value: string;
+  title: string;
+  body: string;
+  tone?: 'brand' | 'field' | 'accent';
+};
+
+export type PreviewMockup = {
+  label: string;
+  title: string;
+  items: string[];
+  action?: string;
+  theme?: 'light' | 'dark';
+  tone?: 'brand' | 'field' | 'accent';
+  tilt?: 'left' | 'right' | 'none';
+};
+
 export type FeatureSection = {
   id: string;
   title: string;
@@ -52,14 +69,9 @@ const withBase = (path: string) => {
     return path;
   }
 
-  const base = import.meta.env.BASE_URL.endsWith('/')
-    ? import.meta.env.BASE_URL.slice(0, -1)
-    : import.meta.env.BASE_URL;
   const [pathname, hash = ''] = path.split('#');
-  const normalizedPath = pathname === '/' ? '/' : pathname.replace(/\/$/, '') + '/';
-  const resolved = base === '' || base === '/'
-    ? normalizedPath
-    : `${base}${normalizedPath === '/' ? '/' : normalizedPath}`;
+  const normalizedPath = pathname.replace(/^\/+|\/+$/g, '');
+  const resolved = normalizedPath === '' ? 'index.html' : `${normalizedPath}.html`;
 
   return hash ? `${resolved}#${hash}` : resolved;
 };
@@ -81,12 +93,12 @@ export const navigation: Link[] = [
 ];
 
 export const primaryCta: CallToAction = {
-  label: 'Plan Your Setup',
+  label: 'Start Setup',
   href: withBase('/setup-faq#setup-steps'),
 };
 
 export const secondaryCta: CallToAction = {
-  label: 'Explore Features',
+  label: 'See Features',
   href: withBase('/features'),
 };
 
@@ -94,123 +106,112 @@ export const homePage = {
   pageName: 'home',
   title: siteMeta.title,
   description:
-    'MyTeam overview for sports organizations, centered on simple operator workflows and clear family-facing benefits.',
+    'MyTeam homepage for sports programs, focused on simple branded workflows for setup, signup, and family updates.',
   hero: {
-    eyebrow: 'For Clubs, Leagues, and Camps',
-    title: 'Run schedules, registration, and updates in one clear flow.',
-    body:
-      'MyTeam gives sports organizations one place to publish the details families need, guide registration and payments, and keep everyone aligned without bouncing between separate tools.',
+    eyebrow: 'Branded App For Sports Programs',
+    title: 'Your program. Your app.',
+    body: 'Schedules, signup, payments, and updates in one place.',
   },
-  heroPill: 'Simple workflows for setup, signup, and weekly communication',
+  heroPill: 'Launch a branded family app',
   quickChecks: [
-    'Publish program details once',
-    'Give families one place to register and pay',
-    'Keep weekly updates in the same flow',
+    'Your logo',
+    'One app',
+    'Clear updates',
   ],
-  valueProps: {
-    title: 'Why a simpler workflow helps',
-    body:
-      'Each part of MyTeam is built around a task your staff already repeat every season and every week.',
+  heroVisuals: [
+    {
+      label: 'Family view',
+      title: 'Find your program',
+      items: ['Search once', 'Save one app', 'See next step'],
+      action: 'Join your team',
+      theme: 'light',
+      tone: 'brand',
+      tilt: 'left',
+    },
+    {
+      label: 'Program app',
+      title: 'Summer Club Tryouts',
+      items: ['Register now', 'Check schedule', 'See roster'],
+      action: 'Open app',
+      theme: 'dark',
+      tone: 'accent',
+      tilt: 'right',
+    },
+  ] satisfies PreviewMockup[],
+  results: {
+    title: 'What your program gets',
+    body: 'Less admin. Clearer steps. A stronger brand.',
     cards: [
       {
-        eyebrow: 'Publishing',
-        title: 'Publish program details once',
-        summary: 'Keep season info, dates, and expectations in one dependable place.',
+        value: 'One place',
+        title: 'Schedules and updates',
+        body: 'Families know where to look.',
         tone: 'brand',
-        body: 'When core information is easier to maintain, staff spend less time resending links or clarifying the basics.',
       },
       {
-        eyebrow: 'Registration',
-        title: 'Move families from interest to signup',
-        summary: 'Give families a cleaner path from program details to the next step.',
+        value: 'Less chasing',
+        title: 'Registration and payments',
+        body: 'Fewer repeat questions.',
         tone: 'field',
-        body: 'Registration and payment steps stay closer to the information families are already reviewing, which reduces back-and-forth.',
       },
       {
-        eyebrow: 'Communication',
-        title: 'Keep updates in the same system',
-        summary: 'Share weekly changes where families already know to look.',
+        value: 'Your brand',
+        title: 'Front and center',
+        body: 'Logo, colors, and name stay visible.',
         tone: 'accent',
-        body: 'Schedule changes, reminders, and announcements are easier to follow when they do not live in a separate chain of tools.',
       },
-    ] satisfies Card[],
+    ] satisfies ResultCard[],
   },
-  workflows: {
-    title: 'Three simple workflows MyTeam is built to support',
-    body:
-      'Each workflow is straightforward: set it up clearly, give families one path to follow, and spend less time stitching the experience together.',
+  steps: {
+    title: 'From setup to live in 3 steps',
+    body: 'Upload your brand, add your program, invite families.',
     items: [
       {
-        eyebrow: 'Season Setup',
-        tag: 'Before registration opens',
-        title: 'Set up your program once',
-        benefit:
-          'Start from one organized source instead of rebuilding the same information across pages, forms, and messages.',
-        body: 'Add the program overview, dates, locations, pricing, and expectations in a format families can scan quickly.',
-        bullets: [
-          'Publish the basics families ask for first',
-          'Keep fees and dates tied to the program page',
-          'Update one clear source when details change',
-        ],
-        tone: 'brand',
+        title: 'Set up your program',
+        body: 'Add logo, details, and dates.',
       },
       {
-        eyebrow: 'Registration',
-        tag: 'When families are ready to act',
-        title: 'Guide signup and payment in one flow',
-        benefit: 'Give families a direct path from reviewing the program to completing the next step.',
-        body: 'Keep registration decisions closer to the program details so staff do less explaining and families do less hunting.',
-        bullets: [
-          'Show registration options clearly',
-          'Connect payment expectations to the signup step',
-          'Reduce dropped handoffs between interest and completion',
-        ],
-        tone: 'field',
+        title: 'Invite families',
+        body: 'Share one app and one path.',
       },
       {
-        eyebrow: 'Weekly Operations',
-        tag: 'During the season',
-        title: 'Manage schedule changes and updates',
-        benefit: 'Keep the weekly rhythm of the program easier to follow for staff and families.',
-        body: 'Post the schedule, share updates, and give families a consistent place to check what changed.',
-        bullets: [
-          'Publish schedule updates without a separate thread',
-          'Keep reminders tied to the program experience',
-          'Cut down on repeat questions about timing and location',
-        ],
-        tone: 'accent',
+        title: 'Run the season',
+        body: 'Post schedules and updates.',
       },
-    ] satisfies WorkflowCard[],
+    ] satisfies Step[],
   },
-  proof: {
-    title: 'One system for staff. One clear path for families.',
-    body:
-      'The strongest benefit is operational clarity: fewer places to maintain, fewer disconnected handoffs, and a more consistent experience for the people using the program.',
-    note:
-      'Illustrative operator view showing core program workflows organized in one place.',
-    boardTitle: 'Illustrative workflow board',
-    boardItems: [
-      'Program overview, dates, and fees in one place',
-      'Registration steps that stay close to the details families need',
-      'Schedule updates published in the same flow',
-      'A cleaner presentation for staff and families',
-    ],
-  },
-  family: {
-    title: 'What families can do more easily',
-    body:
-      'When the workflow is clear, families spend less time decoding the process and more time finishing the task in front of them.',
+  showcase: {
+    title: 'See the branded experience',
+    body: 'Families open your app, not a generic tool.',
     bullets: [
-      'Check schedules and program details without chasing the latest link',
-      'Register and pay from a clearer, more direct path',
-      'Find updates in the same place they already use for the program',
-    ],
+      {
+        title: 'Your logo and colors',
+        body: 'The program looks like yours from the first tap.',
+      },
+      {
+        title: 'Schedules and rosters',
+        body: 'Key details stay in one clear place.',
+      },
+      {
+        title: 'Registration and payments',
+        body: 'The next step stays close to the program info.',
+      },
+    ] satisfies Card[],
+    note: 'One clear place for the season.',
+    mockup: {
+      label: 'Branded club app',
+      title: 'Eagle Select',
+      items: ['Schedule', 'Roster', 'Register', 'Pay online'],
+      action: 'Open today',
+      theme: 'dark',
+      tone: 'field',
+      tilt: 'none',
+    } satisfies PreviewMockup,
   },
   cta: {
-    eyebrow: 'See The Workflow',
-    title: 'Give your program a simpler path from first visit to weekly follow-through',
-    body:
-      'MyTeam is built for programs that want fewer disconnected steps for staff and a clearer experience for families.',
+    eyebrow: 'Start Setup',
+    title: 'Bring your program into one clear app',
+    body: 'Set it up once. Share it with families.',
   },
 };
 
