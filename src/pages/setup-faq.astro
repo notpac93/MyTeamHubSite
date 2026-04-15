@@ -3,10 +3,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 import CtaCluster from '../components/CtaCluster.astro';
 import FaqList from '../components/FaqList.astro';
+import PhoneMockup from '../components/PhoneMockup.astro';
 import SectionIntro from '../components/SectionIntro.astro';
 import { primaryCta, secondaryCta, setupFaqPage } from '../data/site';
 
-const { hero, audiences, setupSteps, experience, trust, faqs, cta } = setupFaqPage;
+const { hero, example, audiencesIntro, audiences, setupSteps, experience, trust, faqs, cta } = setupFaqPage;
 ---
 
 <BaseLayout title={setupFaqPage.title} description={setupFaqPage.description} pageName={setupFaqPage.pageName}>
@@ -22,10 +23,47 @@ const { hero, audiences, setupSteps, experience, trust, faqs, cta } = setupFaqPa
   </section>
 
   <section class="content-section">
-    <SectionIntro title="Who this is for" body={hero.body} align="center" />
+    <div class="setup-example">
+      <div class="setup-example__content">
+        <p class="hero__pill hero__pill--inline">{example.eyebrow}</p>
+        <h2>{example.title}</h2>
+        <p class="section-intro__body">{example.body}</p>
+        <ul class="check-list setup-example__list">
+          {example.bullets.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="setup-example__visual">
+        <PhoneMockup {...example.mockup} />
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <SectionIntro eyebrow="Who It's For" title={audiencesIntro.title} body={audiencesIntro.body} align="center" />
     <div class="card-grid card-grid--three">
-      {audiences.map((card) => (
-        <article class="info-card">
+      {audiences.map((card, index) => (
+        <article class={`info-card info-card--highlight info-card--${index === 1 ? 'field' : index === 2 ? 'accent' : 'brand'}`}>
+          <span class="info-card__icon" aria-hidden="true">
+            {index === 0 && (
+              <svg viewBox="0 0 24 24" role="presentation">
+                <path d="M6 20h12M8 17V8M16 17V8M7 5h10l-1.2 3H8.2Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
+              </svg>
+            )}
+            {index === 1 && (
+              <svg viewBox="0 0 24 24" role="presentation">
+                <circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"></circle>
+                <path d="M12 2v3M12 19v3M22 12h-3M5 12H2M19 5l-2.2 2.2M7.2 16.8 5 19M19 19l-2.2-2.2M7.2 7.2 5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+              </svg>
+            )}
+            {index === 2 && (
+              <svg viewBox="0 0 24 24" role="presentation">
+                <circle cx="12" cy="12" r="7" fill="none" stroke="currentColor" stroke-width="2"></circle>
+              </svg>
+            )}
+          </span>
           <h3>{card.title}</h3>
           <p>{card.body}</p>
         </article>
@@ -34,11 +72,11 @@ const { hero, audiences, setupSteps, experience, trust, faqs, cta } = setupFaqPa
   </section>
 
   <section class="content-section content-section--tint" id="setup-steps">
-    <SectionIntro title="A simple rollout path" body="Use this page to answer fit and rollout questions before implementation details become launch blockers." />
-    <div class="step-grid">
+    <SectionIntro eyebrow="How It Works" title="Get set up in 4 clear steps" body="Move from initial setup to a launch-ready family experience with a cleaner review path." align="center" />
+    <div class="setup-step-stack">
       {setupSteps.map((step, index) => (
-        <article class="step-card">
-          <span class="step-card__index">0{index + 1}</span>
+        <article class="setup-step-card">
+          <span class="setup-step-card__index">0{index + 1}</span>
           <h3>{step.title}</h3>
           <p>{step.body}</p>
         </article>
@@ -47,31 +85,57 @@ const { hero, audiences, setupSteps, experience, trust, faqs, cta } = setupFaqPa
   </section>
 
   <section class="content-section">
-    <div class="comparison-grid comparison-grid--wide">
-      <article class="comparison-card comparison-card--neutral">
-        <p class="comparison-card__label">{experience.operator.title}</p>
-        <p>{experience.operator.body}</p>
+    <SectionIntro eyebrow="Two Perspectives" title={experience.title} body={experience.body} align="center" />
+    <div class="persona-grid">
+      <article class="persona-card persona-card--admin">
+        <div class="persona-card__head">
+          <span class="persona-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" role="presentation">
+              <path d="M12 3 5 6v6c0 4.2 2.8 8 7 9 4.2-1 7-4.8 7-9V6l-7-3Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
+              <path d="m9.5 12 1.8 1.8 3.7-4.1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </span>
+          <h2>{experience.operator.title}</h2>
+        </div>
+        <ul class="check-list persona-card__list">
+          {experience.operator.bullets.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
       </article>
-      <article class="comparison-card comparison-card--neutral">
-        <p class="comparison-card__label">{experience.family.title}</p>
-        <p>{experience.family.body}</p>
-      </article>
-    </div>
-  </section>
 
-  <section class="content-section content-section--contrast">
-    <div class="split-panel split-panel--balanced">
-      <SectionIntro eyebrow="Trust" title={trust.title} body={trust.body} />
-      <ul class="check-list check-list--contrast">
-        {trust.bullets.map((item) => (
-          <li>{item}</li>
-        ))}
-      </ul>
+      <article class="persona-card persona-card--family">
+        <div class="persona-card__head">
+          <span class="persona-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" role="presentation">
+              <path d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM16 11a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM3 20a5 5 0 0 1 10 0M13 20a4 4 0 0 1 8 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+            </svg>
+          </span>
+          <h2>{experience.family.title}</h2>
+        </div>
+        <ul class="check-list persona-card__list">
+          {experience.family.bullets.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </article>
     </div>
   </section>
 
   <section class="content-section">
-    <SectionIntro title="Common questions before rollout" />
+    <SectionIntro eyebrow="Launch Confidence" title={trust.title} body={trust.body} align="center" />
+    <div class="result-grid">
+      {trust.cards.map((card) => (
+        <article class={`result-card result-card--${card.tone ?? 'brand'}`}>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="content-section">
+    <SectionIntro eyebrow="Frequently Asked Questions" title="Common setup questions, answered" body="Use this section to clear up fit, rollout expectations, and what to review before launch." align="center" />
     <FaqList items={faqs} />
   </section>
 

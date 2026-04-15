@@ -64,6 +64,25 @@ export type FeatureSection = {
   familyItems: string[];
 };
 
+export type CompareItem = {
+  title: string;
+  body: string;
+};
+
+export type SavingsCard = {
+  title: string;
+  before: string;
+  after: string;
+  tag: string;
+  tone?: 'brand' | 'field' | 'accent';
+  icon?: 'announce' | 'payment' | 'roster' | 'schedule' | 'family' | 'registration';
+};
+
+export type ToolItem = {
+  title: string;
+  body: string;
+};
+
 const withBase = (path: string) => {
   if (path.startsWith('#')) {
     return path;
@@ -222,14 +241,38 @@ export const featuresPage = {
     'Feature overview for MyTeam, centered on the simple workflows sports program operators use every week.',
   hero: {
     eyebrow: 'Workflow Features',
-    title: 'Each feature supports a job your staff already does.',
+    title: 'Built around the jobs your program already runs.',
     body:
-      'MyTeam is organized around clear operator tasks: publish the program, guide signup, manage the schedule, send updates, and keep the experience on brand.',
+      'Publish details, guide signup, keep schedules current, share updates, and keep the whole experience on brand.',
+  },
+  overview: {
+    title: 'What MyTeam helps you run',
+    body: 'Simple workflows for staff. Clearer paths for families.',
+    cards: [
+      {
+        value: 'One place',
+        title: 'Program details',
+        body: 'Dates, fees, locations, and next steps stay together.',
+        tone: 'brand',
+      },
+      {
+        value: 'One path',
+        title: 'Registration',
+        body: 'Families move from interest to action with less friction.',
+        tone: 'field',
+      },
+      {
+        value: 'One brand',
+        title: 'Family experience',
+        body: 'Your program stays front and center from first visit onward.',
+        tone: 'accent',
+      },
+    ] satisfies ResultCard[],
   },
   indexLinks: [
-    { label: 'Program Setup', href: '#publishing' },
+    { label: 'Setup', href: '#publishing' },
     { label: 'Schedules', href: '#schedules' },
-    { label: 'Registration', href: '#registration' },
+    { label: 'Signup', href: '#registration' },
     { label: 'Updates', href: '#communication' },
     { label: 'Brand', href: '#branding' },
   ] satisfies Link[],
@@ -237,67 +280,67 @@ export const featuresPage = {
     {
       id: 'publishing',
       title: 'Publish the program overview',
-      body: 'Use this area to keep season details, locations, dates, pricing, and expectations organized in one public-facing place.',
-      benefit: 'Answer the first round of family questions with one dependable page.',
+      body: 'Keep dates, fees, locations, and expectations in one clear place.',
+      benefit: 'Families find the basics faster.',
       operatorTitle: 'Use it to',
       operatorItems: [
-        'Create the main program overview',
-        'Update dates, fees, and requirements in one place',
-        'Keep key information current without chasing multiple pages',
+        'Post the main program page',
+        'Update dates and fees once',
+        'Keep the public details current',
       ],
       familyTitle: 'Families can',
       familyItems: [
         'Review the basics quickly',
-        'Save one link instead of collecting several',
-        'See the next step without guessing',
+        'Save one dependable link',
+        'See the next step sooner',
       ],
     },
     {
       id: 'schedules',
       title: 'Keep schedules easy to check',
-      body: 'Post event timing and location details in a format that is easier to maintain and easier for families to reference throughout the season.',
-      benefit: 'Spend less time repeating where to look for the latest schedule.',
+      body: 'Keep timing and location details easier to maintain and easier to reference.',
+      benefit: 'Staff repeat less. Families check faster.',
       operatorTitle: 'Use it to',
       operatorItems: [
-        'Publish dates, times, and location changes',
-        'Keep schedule details close to the team or program context',
-        'Update once when the plan changes',
+        'Post dates, times, and changes',
+        'Keep updates close to the program context',
+        'Change the schedule in one place',
       ],
       familyTitle: 'Families can',
       familyItems: [
-        'Check the latest timing faster',
+        'Check the latest timing quickly',
         'Confirm locations without extra messages',
-        'See changes in the same flow as other program details',
+        'See changes in the same flow',
       ],
     },
     {
       id: 'registration',
       title: 'Guide registration and payment clearly',
-      body: 'Keep signup and payment expectations close to the program information so families can move from review to action with less confusion.',
-      benefit: 'Move families from interest to completion with fewer handoffs.',
+      body: 'Keep signup and payment steps close to the program information.',
+      benefit: 'Families move from review to action with less confusion.',
       operatorTitle: 'Use it to',
       operatorItems: [
-        'Show signup options clearly',
-        'Pair payment expectations with the registration step',
-        'Keep the path from program page to action simple',
+        'Show the signup step clearly',
+        'Keep payment expectations close by',
+        'Reduce extra handoffs before completion',
       ],
       familyTitle: 'Families can',
       familyItems: [
-        'Review what to choose',
-        'Register and pay with less confusion',
-        'Finish the step without bouncing between tools',
+        'Review what to do',
+        'Register with less back-and-forth',
+        'Finish the step in a clearer flow',
       ],
     },
     {
       id: 'communication',
       title: 'Send program updates where families already look',
-      body: 'Keep reminders, changes, and team information tied to the same experience families use for schedules and next steps.',
-      benefit: 'Reduce repeat questions by keeping reminders and changes in the same experience.',
+      body: 'Keep reminders, changes, and team information in the same experience as the rest of the program.',
+      benefit: 'Updates land in a clearer place to check.',
       operatorTitle: 'Use it to',
       operatorItems: [
-        'Post team or program updates',
-        'Share schedule changes and reminders in context',
-        'Keep communications closer to the actual workflow',
+        'Post program and team updates',
+        'Share reminders in context',
+        'Keep communication tied to the workflow',
       ],
       familyTitle: 'Families can',
       familyItems: [
@@ -309,13 +352,13 @@ export const featuresPage = {
     {
       id: 'branding',
       title: 'Present the program with a consistent brand',
-      body: 'Keep the experience visually connected to your organization so the workflow feels more intentional from the first visit onward.',
-      benefit: 'A more polished experience makes the workflow easier to trust from the first visit.',
+      body: 'Keep the experience visually connected to your organization from the first visit onward.',
+      benefit: 'A clearer brand makes the experience easier to trust.',
       operatorTitle: 'Use it to',
       operatorItems: [
-        'Apply your program identity across the experience',
-        'Keep public pages and family-facing flows visually connected',
-        'Present a more organized digital home',
+        'Apply your logo and colors',
+        'Keep public pages and flows visually connected',
+        'Present a more polished digital home',
       ],
       familyTitle: 'Families can',
       familyItems: [
@@ -326,15 +369,15 @@ export const featuresPage = {
     },
   ] satisfies FeatureSection[],
   proof: {
-    title: 'The feature set stays focused on clarity',
+    title: 'The page stays focused on the workflows that matter',
     body:
-      'This page is intentionally centered on everyday program jobs, not a long list of abstract capabilities. The value is in making common workflows easier to run and easier to follow.',
+      'No feature sprawl. Just the jobs most programs repeat every week and the clearer family experience those jobs support.',
   },
   cta: {
     eyebrow: 'Workflow Tour',
-    title: 'Explore the workflow areas your program uses most',
+    title: 'See the workflows your program can simplify first',
     body:
-      'See how MyTeam helps your staff publish, organize, collect, and communicate in one clearer experience.',
+      'Start with the parts of your program that create the most repeat work today.',
   },
 };
 
@@ -345,51 +388,153 @@ export const savingsPage = {
     'Operational savings page for MyTeam focused on how simpler workflows reduce repeat work and tool sprawl.',
   hero: {
     eyebrow: 'Operational Savings',
-    title: 'Save time by keeping the core workflow together.',
+    title: 'Less patchwork. More room to run.',
     body:
-      'When schedules, registration, payments, and updates live in one consistent flow, staff spend less time reconnecting the same information and families have fewer places to check.',
+      'When more of the program workflow lives in one place, staff spend less time reconnecting the same details and families have a clearer path to follow.',
+  },
+  snapshot: {
+    title: 'The goal is simpler operations',
+    body: 'Not inflated numbers. Less repeated work, fewer handoffs, and a cleaner family experience.',
   },
   comparison: {
-    title: 'What gets simpler with one clear workflow',
-    body: 'The savings come from reducing repeat work, not from adding more admin layers.',
-    beforeLabel: 'When the workflow is scattered',
-    beforeBody:
-      'Staff update multiple tools, resend the same answers, and spend more time helping families piece together what should be one process.',
-    afterLabel: 'When the workflow stays together',
-    afterBody:
-      'Program details, signup steps, and weekly updates are easier to maintain in one place, which makes the experience easier to run and easier to follow.',
+    title: 'Before vs. after MyTeam',
+    body: 'See how day-to-day program management changes when more of the workflow lives in one place.',
+    beforeLabel: 'Without MyTeam',
+    beforeItems: [
+      {
+        title: 'Schedules repeated across channels',
+        body: 'Updates get copied into email threads, texts, and separate chats.',
+      },
+      {
+        title: 'Payments tracked in a separate flow',
+        body: 'Staff piece together what is paid, what is pending, and what still needs follow-up.',
+      },
+      {
+        title: 'Rosters, forms, and details drift apart',
+        body: 'Different copies make the program harder for staff and families to follow.',
+      },
+      {
+        title: 'Brand gets lost in generic tools',
+        body: 'Families move through disconnected systems instead of one clear program experience.',
+      },
+    ] satisfies CompareItem[],
+    afterLabel: 'With MyTeam',
+    afterItems: [
+      {
+        title: 'Post once in a clearer place',
+        body: 'Families check the same experience for program details, schedule changes, and next steps.',
+      },
+      {
+        title: 'Keep signup and payment steps closer together',
+        body: 'There is less back-and-forth between reviewing the program and acting on it.',
+      },
+      {
+        title: 'Work from a clearer source of truth',
+        body: 'Schedules, rosters, and program details stay easier to maintain and easier to follow.',
+      },
+      {
+        title: 'Your brand stays visible',
+        body: 'The experience feels more polished from the first visit onward.',
+      },
+    ] satisfies CompareItem[],
   },
-  sprawl: {
-    title: 'The biggest savings show up in repeated weekly tasks',
-    body:
-      'The goal is not to promise magic. The goal is to remove avoidable friction from the tasks your program repeats all season.',
-    leftTitle: 'Time lost today',
-    leftBullets: [
-      'Updating the same details in multiple places',
-      'Answering repeat questions about dates, fees, or next steps',
-      'Sending families across separate tools to finish one task',
-      'Explaining schedule changes in disconnected channels',
-    ],
-    rightTitle: 'What a simpler flow can save',
-    rightBullets: [
-      'Fewer places to maintain program details',
-      'Less back-and-forth before families complete signup',
-      'A clearer path for weekly schedule and update checks',
-      'A more consistent experience for staff and families',
-    ],
+  timeBack: {
+    title: 'Where teams often get time back',
+    body: 'These are common admin jobs MyTeam is designed to make simpler.',
+    cards: [
+      {
+        title: 'Announcements',
+        before: 'Updates get rewritten across separate channels.',
+        after: 'Post the change in the same program flow families already use.',
+        tag: 'Less repeated posting',
+        tone: 'brand',
+        icon: 'announce',
+      },
+      {
+        title: 'Payment follow-up',
+        before: 'Staff track status in a separate step and follow up manually.',
+        after: 'Payment-related next steps stay closer to registration.',
+        tag: 'Less chasing status',
+        tone: 'field',
+        icon: 'payment',
+      },
+      {
+        title: 'Roster updates',
+        before: 'Different copies get shared around staff and families.',
+        after: 'Team information stays easier to keep current in one place.',
+        tag: 'Less version drift',
+        tone: 'accent',
+        icon: 'roster',
+      },
+      {
+        title: 'Schedule changes',
+        before: 'Timing changes get redistributed again and again.',
+        after: 'The latest schedule stays easier to check from one experience.',
+        tag: 'Less resending',
+        tone: 'brand',
+        icon: 'schedule',
+      },
+      {
+        title: 'Family questions',
+        before: 'Staff answer the same "where do I find this?" questions repeatedly.',
+        after: 'Families have a clearer path to check program details themselves.',
+        tag: 'Fewer repeat questions',
+        tone: 'field',
+        icon: 'family',
+      },
+      {
+        title: 'Registration setup',
+        before: 'Interest, forms, payment, and updates get split across tools.',
+        after: 'The path from review to signup stays tighter and easier to follow.',
+        tag: 'Fewer handoffs',
+        tone: 'accent',
+        icon: 'registration',
+      },
+    ] satisfies SavingsCard[],
   },
-  proof: {
-    title: 'Simple workflows create the savings',
+  consolidation: {
+    title: 'One platform instead of a patchwork',
     body:
-      'The practical value comes from keeping the core program jobs connected: publish the details, collect the next step, and manage weekly updates without rebuilding context every time.',
+      'Actual savings depend on the tools your program already uses. The real value is bringing more of the workflow into one system.',
+    leftTitle: 'Teams often juggle',
+    leftItems: [
+      {
+        title: 'Email and message tools',
+        body: 'A separate place for reminders, announcements, and family communication.',
+      },
+      {
+        title: 'Payment tools or manual tracking',
+        body: 'Another step to collect payments and confirm what is complete.',
+      },
+      {
+        title: 'Scheduling software or spreadsheets',
+        body: 'Another place to maintain dates, locations, and changes.',
+      },
+      {
+        title: 'Form builders for registration',
+        body: 'Another handoff before a family finishes the next step.',
+      },
+      {
+        title: 'Separate public-facing pages',
+        body: 'Another place to manage the program presentation and brand.',
+      },
+    ] satisfies ToolItem[],
+    rightTitle: 'MyTeam brings together',
+    rightItems: [
+      'Program details and branded pages',
+      'Registration and payment flow',
+      'Schedules and updates',
+      'Rosters and team information',
+      'One clearer family-facing experience',
+    ],
     note:
-      'Exact time or cost savings will vary by program and should be validated before use as a quantified claim.',
+      'Review your current stack before turning this into a quantified savings claim.',
   },
   cta: {
     eyebrow: 'Simplify The Workflow',
-    title: 'Reduce repeat work by making the program easier to follow',
+    title: 'Start with the workflows creating the most repeat work',
     body:
-      'Start with the tasks your staff repeat most often, then give families one clear path to find information and complete the next step.',
+      'Bring the highest-friction parts of your program into one clearer experience first.',
   },
 };
 
@@ -400,58 +545,108 @@ export const setupFaqPage = {
     'Setup FAQ for MyTeam covering fit, rollout expectations, and workflow readiness before launch.',
   hero: {
     eyebrow: 'Setup FAQ',
-    title: 'What to expect before you set up MyTeam.',
+    title: 'Plan the rollout before you share it with families.',
     body:
-      'Use this page to confirm fit, understand the rollout path, and see how the core workflows are meant to come together before launch.',
+      'Use this page to confirm fit, understand the rollout path, and make sure the family-facing experience feels clear before launch.',
+  },
+  example: {
+    eyebrow: 'Illustrative Brand View',
+    title: 'See how your program can look inside MyTeam.',
+    body:
+      'The goal is simple: families should see your brand, your program details, and the next step in one clear experience.',
+    bullets: [
+      'Your logo and colors stay visible',
+      'Program details and next steps stay together',
+      'The family view is easier to follow at a glance',
+    ],
+    mockup: {
+      label: 'Illustrative club app',
+      title: 'Eagle Select',
+      items: ['Check schedule', 'See team updates', 'Register here'],
+      action: 'Open club app',
+      theme: 'dark',
+      tone: 'brand',
+      tilt: 'none',
+    } satisfies PreviewMockup,
+  },
+  audiencesIntro: {
+    title: 'Built for sports program operators',
+    body: 'Clubs, camps, and leagues that need a clearer program workflow for both staff and families.',
   },
   audiences: [
     {
       title: 'Club Directors',
-      body: 'For leaders who want a clearer way to publish program details, guide signup, and reduce day-to-day coordination friction.',
+      body: 'For leaders who want one clearer place for schedules, registration, payments, and family updates.',
     },
     {
       title: 'Camp Operators',
-      body: 'For programs that need one simpler workflow for schedules, registration, payments, and family communication.',
+      body: 'For programs that need a cleaner family path from program details to sign-up and weekly updates.',
     },
     {
       title: 'League Administrators',
-      body: 'For organizations that need a more consistent structure across participant-facing information and weekly operations.',
+      body: 'For organizations that need a more consistent structure across teams, divisions, and family-facing information.',
     },
   ] satisfies Card[],
   setupSteps: [
     {
-      title: 'Map your core workflow',
-      body: 'Start with the program details, dates, fees, and next steps families need to see clearly.',
+      title: 'Create your program account',
+      body: 'Start with the core program name, sport, and admin details you need for setup.',
     },
     {
-      title: 'Prepare the family path',
-      body: 'Organize the schedule, registration, payment, and update flows your families will use most often.',
+      title: 'Add your brand and program details',
+      body: 'Upload the logo, define the presentation, and organize the dates, fees, and locations families need first.',
     },
     {
-      title: 'Review the live experience',
-      body: 'Check the full experience carefully so the public-facing workflow feels consistent before rollout.',
+      title: 'Set the family flow',
+      body: 'Prepare the schedule, registration, payment expectations, and update paths families will use most often.',
+    },
+    {
+      title: 'Review before launch',
+      body: 'Check the live experience carefully so the public-facing path feels clear before you share it.',
     },
   ] satisfies Step[],
   experience: {
-    title: 'Built for both sides of the experience',
+    title: 'The operator side and the family side should both feel clear',
+    body:
+      'A strong rollout gives staff a simpler system to maintain and gives families a clearer experience to follow.',
     operator: {
-      title: 'For operators',
-      body: 'MyTeam is meant to support the recurring jobs that keep a program moving: publish the details, guide the next step, and manage updates clearly.',
+      title: 'As the operator',
+      bullets: [
+        'Keep program details, schedules, and updates organized in one place',
+        'Set the registration and payment path more clearly before launch',
+        'Review the public-facing experience before sharing it with families',
+      ],
     },
     family: {
-      title: 'For families',
-      body: 'The family side should feel easier to follow, easier to trust, and easier to act on because the next step is clearer.',
+      title: 'As the family',
+      bullets: [
+        'Find the program and understand the basics quickly',
+        'See schedules, updates, and next steps in a clearer view',
+        'Follow a more consistent path for registration and payment expectations',
+      ],
     },
   },
   trust: {
-    title: 'Trust matters before launch',
+    title: 'What families should feel before launch',
     body:
-      'Before launch, families need clear expectations, consistent presentation, and one dependable place to complete the workflow.',
-    bullets: [
-      'Clear schedule, registration, and payment expectations',
-      'More consistent program presentation from first visit onward',
-      'A simpler path for families to understand what to do next',
-    ],
+      'Clear expectations build trust faster than long explanations. The setup should feel straightforward before the first family sees it.',
+    cards: [
+      {
+        title: 'Clear next steps',
+        body: 'Families should know where to register, how to review payment expectations, and where to check for updates.',
+        tone: 'brand',
+      },
+      {
+        title: 'Consistent presentation',
+        body: 'The program should feel recognizable from the first visit through the ongoing family experience.',
+        tone: 'field',
+      },
+      {
+        title: 'A dependable review pass',
+        body: 'Before rollout, staff should check the details carefully so the public-facing workflow feels ready to share.',
+        tone: 'accent',
+      },
+    ] satisfies Card[],
   },
   faqs: [
     {
@@ -462,22 +657,32 @@ export const setupFaqPage = {
     {
       question: 'How should I think about setup?',
       answer:
-        'Think about setup as a simple rollout path: map the core workflow, prepare the family path, and review the experience carefully before launch.',
+        'Think about setup as a rollout plan: create the program account, add your brand and details, set the family flow, and review the experience before launch.',
     },
     {
       question: 'What should families expect?',
-      answer: 'Families should expect a more consistent place to follow program information, complete the next step, and check for updates.',
+      answer: 'Families should expect a more consistent place to review program information, understand the next step, and check for updates.',
     },
     {
-      question: 'How does MyTeam help create trust before launch?',
+      question: 'What should I review before launch?',
       answer:
-        'MyTeam helps programs present clearer expectations, more consistent information, and a cleaner path for families to know what to do next.',
+        'Review the branding, program details, schedules, registration step, payment expectations, and update paths so the experience feels clear before you share it.',
+    },
+    {
+      question: 'Can I use MyTeam across multiple teams or divisions?',
+      answer:
+        'MyTeam is designed for programs that need a more consistent structure across teams, divisions, and family-facing information. Plan the exact setup around how your organization is organized today.',
+    },
+    {
+      question: 'How should I think about the payment step?',
+      answer:
+        'Treat the payment step as part of the overall family flow. Keep expectations clear, review the experience carefully, and make sure families understand what happens next.',
     },
   ] satisfies FaqItem[],
   cta: {
     eyebrow: 'Rollout Planning',
-    title: 'Start with a clearer rollout plan',
+    title: 'Start with a rollout plan that feels clear before launch',
     body:
-      'Use the setup page to reduce uncertainty and plan a more consistent workflow before launch.',
+      'Use the setup page to reduce uncertainty and prepare a cleaner family-facing experience before launch.',
   },
 };

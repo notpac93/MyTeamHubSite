@@ -5,7 +5,7 @@ import CtaCluster from '../components/CtaCluster.astro';
 import SectionIntro from '../components/SectionIntro.astro';
 import { primaryCta, savingsPage, secondaryCta } from '../data/site';
 
-const { hero, comparison, sprawl, proof, cta } = savingsPage;
+const { hero, snapshot, comparison, timeBack, consolidation, cta } = savingsPage;
 ---
 
 <BaseLayout title={savingsPage.title} description={savingsPage.description} pageName={savingsPage.pageName}>
@@ -20,53 +20,147 @@ const { hero, comparison, sprawl, proof, cta } = savingsPage;
 
       <div class="surface-card surface-card--contrast">
         <p class="surface-card__eyebrow">Why it matters</p>
-        <h2>Fewer resets between tools means less wasted time.</h2>
-        <p>When your core workflow stays together, staff spend less time restating the same details and families have a clearer path to follow.</p>
+        <h2>{snapshot.title}</h2>
+        <p>{snapshot.body}</p>
       </div>
     </div>
   </section>
 
   <section class="content-section">
     <SectionIntro title={comparison.title} body={comparison.body} align="center" />
-    <div class="comparison-grid">
-      <article class="comparison-card comparison-card--before">
-        <p class="comparison-card__label">{comparison.beforeLabel}</p>
-        <p>{comparison.beforeBody}</p>
+    <div class="compare-shell">
+      <article class="compare-column compare-column--before">
+        <div class="compare-column__header compare-column__header--before">
+          <span class="compare-column__badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" role="presentation">
+              <circle cx="12" cy="12" r="9"></circle>
+              <path d="M9 9l6 6M15 9l-6 6"></path>
+            </svg>
+          </span>
+          <p class="compare-column__title">{comparison.beforeLabel}</p>
+        </div>
+        <div class="compare-list">
+          {comparison.beforeItems.map((item) => (
+            <article class="compare-list__item">
+              <span class="compare-list__icon compare-list__icon--before" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="presentation">
+                  <path d="M12 3 3 21h18L12 3Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
+                  <path d="M12 9v4M12 17h.01" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                </svg>
+              </span>
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+              </div>
+            </article>
+          ))}
+        </div>
       </article>
-      <article class="comparison-card comparison-card--after">
-        <p class="comparison-card__label">{comparison.afterLabel}</p>
-        <p>{comparison.afterBody}</p>
+
+      <article class="compare-column compare-column--after">
+        <div class="compare-column__header compare-column__header--after">
+          <span class="compare-column__badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" role="presentation">
+              <circle cx="12" cy="12" r="9"></circle>
+              <path d="m8 12.2 2.7 2.7L16.5 9"></path>
+            </svg>
+          </span>
+          <p class="compare-column__title">{comparison.afterLabel}</p>
+        </div>
+        <div class="compare-list">
+          {comparison.afterItems.map((item) => (
+            <article class="compare-list__item">
+              <span class="compare-list__icon compare-list__icon--after" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="presentation">
+                  <path d="m5 12 4.2 4.2L19 6.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </span>
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+              </div>
+            </article>
+          ))}
+        </div>
       </article>
     </div>
   </section>
 
   <section class="content-section content-section--tint">
-    <SectionIntro title={sprawl.title} body={sprawl.body} />
-    <div class="matrix-grid">
-      <article class="surface-card surface-card--warm">
-        <p class="surface-card__eyebrow">{sprawl.leftTitle}</p>
-        <ul class="surface-list">
-          {sprawl.leftBullets.map((item) => (
-            <li>{item}</li>
-          ))}
-        </ul>
-      </article>
-
-      <article class="surface-card surface-card--accent">
-        <p class="surface-card__eyebrow">{sprawl.rightTitle}</p>
-        <ul class="surface-list">
-          {sprawl.rightBullets.map((item) => (
-            <li>{item}</li>
-          ))}
-        </ul>
-      </article>
+    <SectionIntro eyebrow="Time Back" title={timeBack.title} body={timeBack.body} align="center" />
+    <div class="savings-work-grid">
+      {timeBack.cards.map((card) => (
+        <article class={`savings-work-card savings-work-card--${card.tone ?? 'brand'}`}>
+          <span class="savings-work-card__icon" aria-hidden="true">
+            {card.icon === 'announce' && (
+              <svg viewBox="0 0 24 24" role="presentation">
+                <path d="M4 12V9l11-5v16L4 15v-3Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
+                <path d="M15 9h2a3 3 0 0 1 0 6h-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+              </svg>
+            )}
+            {card.icon === 'payment' && (
+              <svg viewBox="0 0 24 24" role="presentation">
+                <path d="M12 3v18M16 7.5c0-1.9-1.8-3-4-3s-4 1.1-4 3 1.8 3 4 3 4 1.1 4 3-1.8 3-4 3-4-1.1-4-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+              </svg>
+            )}
+            {card.icon === 'roster' && (
+              <svg viewBox="0 0 24 24" role="presentation">
+                <path d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM16 11a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM3 20a5 5 0 0 1 10 0M13 20a4 4 0 0 1 8 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+              </svg>
+            )}
+            {card.icon === 'schedule' && (
+              <svg viewBox="0 0 24 24" role="presentation">
+                <rect x="4" y="5" width="16" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="2"></rect>
+                <path d="M8 3v4M16 3v4M4 10h16M8 13h3M8 16h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+              </svg>
+            )}
+            {card.icon === 'family' && (
+              <svg viewBox="0 0 24 24" role="presentation">
+                <path d="M7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM17 11a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM2.5 20a5 5 0 0 1 9 0M13.5 20a4 4 0 0 1 7 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+              </svg>
+            )}
+            {card.icon === 'registration' && (
+              <svg viewBox="0 0 24 24" role="presentation">
+                <rect x="6" y="3" width="12" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"></rect>
+                <path d="M9 8h6M9 12h6M9 16h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+              </svg>
+            )}
+          </span>
+          <h3>{card.title}</h3>
+          <p><strong>Before:</strong> {card.before}</p>
+          <p><strong>After:</strong> {card.after}</p>
+          <p class="savings-work-card__tag">{card.tag}</p>
+        </article>
+      ))}
     </div>
   </section>
 
-  <section class="content-section content-section--contrast">
-    <div class="split-panel split-panel--balanced">
-      <SectionIntro eyebrow="Impact Story" title={proof.title} body={proof.body} />
-      <p class="section-note section-note--contrast">{proof.note}</p>
+  <section class="content-section">
+    <SectionIntro eyebrow="Consolidation" title={consolidation.title} body={consolidation.body} align="center" />
+    <div class="tool-compare">
+      <div>
+        <h2 class="tool-compare__heading">{consolidation.leftTitle}</h2>
+        <div class="tool-stack">
+          {consolidation.leftItems.map((item) => (
+            <article class="tool-item tool-item--left">
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div class="tool-compare__arrow" aria-hidden="true">→</div>
+
+      <div class="tool-panel">
+        <h2 class="tool-compare__heading">{consolidation.rightTitle}</h2>
+        <ul class="tool-panel__list">
+          {consolidation.rightItems.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+        <p class="tool-panel__note">{consolidation.note}</p>
+      </div>
     </div>
   </section>
 

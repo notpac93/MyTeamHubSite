@@ -5,7 +5,7 @@ import CtaCluster from '../components/CtaCluster.astro';
 import SectionIntro from '../components/SectionIntro.astro';
 import { featuresPage, primaryCta, secondaryCta } from '../data/site';
 
-const { hero, indexLinks, sections, proof, cta } = featuresPage;
+const { hero, overview, indexLinks, sections, proof, cta } = featuresPage;
 ---
 
 <BaseLayout title={featuresPage.title} description={featuresPage.description} pageName={featuresPage.pageName}>
@@ -24,6 +24,19 @@ const { hero, indexLinks, sections, proof, cta } = featuresPage;
         <a href={item.href}>{item.label}</a>
       ))}
     </nav>
+  </section>
+
+  <section class="content-section">
+    <SectionIntro eyebrow="At A Glance" title={overview.title} body={overview.body} align="center" />
+    <div class="result-grid">
+      {overview.cards.map((card) => (
+        <article class={`result-card result-card--${card.tone ?? 'brand'}`}>
+          <p class="result-card__value">{card.value}</p>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
   </section>
 
   <section class="content-section">
@@ -67,9 +80,9 @@ const { hero, indexLinks, sections, proof, cta } = featuresPage;
     <div class="split-panel split-panel--balanced">
       <SectionIntro eyebrow="Proof Block" title={proof.title} body={proof.body} />
       <div class="surface-card surface-card--accent">
-        <p class="surface-card__eyebrow">What this page does</p>
-        <h2>Show the task, the benefit, and the family outcome in one scan.</h2>
-        <p>The page is designed so an operator can understand each workflow quickly without reading through generic marketing copy.</p>
+        <p class="surface-card__eyebrow">Why it reads clearly</p>
+        <h2>Each section shows the workflow, the benefit, and the family outcome.</h2>
+        <p>The page stays short on purpose so operators can scan it quickly and still understand the value.</p>
       </div>
     </div>
   </section>
