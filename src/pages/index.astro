@@ -6,7 +6,7 @@ import ProgramBoard from '../components/ProgramBoard.astro';
 import SectionIntro from '../components/SectionIntro.astro';
 import { homePage, primaryCta, secondaryCta } from '../data/site';
 
-const { hero, heroPill, quickChecks, valueProps, steps, proof, family, cta } = homePage;
+const { hero, heroPill, quickChecks, valueProps, workflows, proof, family, cta } = homePage;
 ---
 
 <BaseLayout title={homePage.title} description={homePage.description} pageName={homePage.pageName}>
@@ -31,9 +31,9 @@ const { hero, heroPill, quickChecks, valueProps, steps, proof, family, cta } = h
         <ProgramBoard label="Illustrative operator view" title={proof.boardTitle} items={proof.boardItems} note={proof.note} />
 
         <div class="surface-card surface-card--accent">
-          <p class="surface-card__eyebrow">What changes</p>
-          <h2>Less stitching. More clarity.</h2>
-          <p>MyTeam is positioned around a cleaner way to present the program details families and staff already depend on.</p>
+          <p class="surface-card__eyebrow">What gets simpler</p>
+          <h2>Publish once. Guide the next step. Keep updates in the same flow.</h2>
+          <p>That structure gives staff fewer moving parts to manage and gives families fewer places to check.</p>
         </div>
       </div>
     </div>
@@ -88,13 +88,24 @@ const { hero, heroPill, quickChecks, valueProps, steps, proof, family, cta } = h
   </section>
 
   <section class="content-section content-section--tint">
-    <SectionIntro title={steps.title} body={steps.body} />
-    <div class="step-grid">
-      {steps.items.map((step, index) => (
-        <article class="step-card">
-          <span class="step-card__index">0{index + 1}</span>
-          <h3>{step.title}</h3>
-          <p>{step.body}</p>
+    <SectionIntro title={workflows.title} body={workflows.body} />
+    <div class="workflow-grid">
+      {workflows.items.map((workflow) => (
+        <article class={`workflow-card workflow-card--${workflow.tone ?? 'brand'}`}>
+          <div class="workflow-card__top">
+            <div>
+              {workflow.eyebrow && <p class="info-card__eyebrow">{workflow.eyebrow}</p>}
+            </div>
+            {workflow.tag && <span class="workflow-card__tag">{workflow.tag}</span>}
+          </div>
+          <h3>{workflow.title}</h3>
+          <p class="workflow-card__benefit">{workflow.benefit}</p>
+          <p>{workflow.body}</p>
+          <ul class="workflow-card__list">
+            {workflow.bullets.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
         </article>
       ))}
     </div>
@@ -108,9 +119,9 @@ const { hero, heroPill, quickChecks, valueProps, steps, proof, family, cta } = h
       </div>
 
       <div class="surface-card surface-card--warm">
-        <p class="surface-card__eyebrow">Why it matters</p>
-        <h2>A more organized member experience creates less friction for everyone involved.</h2>
-        <p>A clearer structure, a cleaner presentation, and a more reliable place for key program information can make the whole experience easier to follow.</p>
+        <p class="surface-card__eyebrow">Why it works</p>
+        <h2>Less re-entry. Less explaining. Less chasing.</h2>
+        <p>When setup, signup, and weekly updates live in the same system, staff do not have to rebuild context every time something changes.</p>
       </div>
     </div>
   </section>

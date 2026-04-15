@@ -31,18 +31,32 @@ const { hero, indexLinks, sections, proof, cta } = featuresPage;
       {sections.map((section, index) => (
         <article id={section.id} class={`feature-block ${index % 2 === 1 ? 'feature-block--reverse' : ''}`}>
           <div>
-            <SectionIntro eyebrow="Capability Area" title={section.title} body={section.body} />
-            <ul class="check-list check-list--compact">
-              {section.highlights.map((item) => (
-                <li>{item}</li>
-              ))}
-            </ul>
+            <SectionIntro eyebrow="Simple Workflow" title={section.title} body={section.body} />
           </div>
 
-          <div class="surface-card surface-card--feature">
-            <p class="surface-card__eyebrow">Focused support</p>
-            <h2>{section.title}</h2>
-            <p>{section.body}</p>
+          <div class="surface-card surface-card--feature-detail">
+            <p class="surface-card__eyebrow">Primary benefit</p>
+            <h2>{section.benefit}</h2>
+
+            <div class="feature-detail-grid">
+              <div>
+                <p class="feature-detail__label">{section.operatorTitle}</p>
+                <ul class="surface-list">
+                  {section.operatorItems.map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <p class="feature-detail__label">{section.familyTitle}</p>
+                <ul class="surface-list">
+                  {section.familyItems.map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
         </article>
       ))}
@@ -54,8 +68,8 @@ const { hero, indexLinks, sections, proof, cta } = featuresPage;
       <SectionIntro eyebrow="Proof Block" title={proof.title} body={proof.body} />
       <div class="surface-card surface-card--accent">
         <p class="surface-card__eyebrow">What this page does</p>
-        <h2>Give operators and families a clearer view of the workflows they rely on.</h2>
-        <p>Each capability area should be easy to scan, easy to understand, and connected to the day-to-day work programs already manage.</p>
+        <h2>Show the task, the benefit, and the family outcome in one scan.</h2>
+        <p>The page is designed so an operator can understand each workflow quickly without reading through generic marketing copy.</p>
       </div>
     </div>
   </section>
