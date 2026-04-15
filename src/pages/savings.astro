@@ -2,10 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 import CtaCluster from '../components/CtaCluster.astro';
+import PhoneMockup from '../components/PhoneMockup.astro';
 import SectionIntro from '../components/SectionIntro.astro';
 import { primaryCta, savingsPage, secondaryCta } from '../data/site';
 
-const { hero, snapshot, comparison, timeBack, consolidation, cta } = savingsPage;
+const { hero, snapshot, comparison, spotlight, timeBack, consolidation, cta } = savingsPage;
 ---
 
 <BaseLayout title={savingsPage.title} description={savingsPage.description} pageName={savingsPage.pageName}>
@@ -83,6 +84,27 @@ const { hero, snapshot, comparison, timeBack, consolidation, cta } = savingsPage
           ))}
         </div>
       </article>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="visual-break visual-break--ink">
+      <div class="visual-break__content">
+        <p class="hero__pill hero__pill--inline">{spotlight.eyebrow}</p>
+        <h2>{spotlight.title}</h2>
+        <p class="section-intro__body">{spotlight.body}</p>
+        <div class="visual-break__chips">
+          {spotlight.chips.map((item) => (
+            <span class="visual-chip">{item}</span>
+          ))}
+        </div>
+      </div>
+
+      <div class="visual-break__visual">
+        <PhoneMockup {...spotlight.mockup} />
+        <div class="visual-break__badge visual-break__badge--top">{spotlight.badges[0]}</div>
+        <div class="visual-break__badge visual-break__badge--bottom">{spotlight.badges[1]}</div>
+      </div>
     </div>
   </section>
 

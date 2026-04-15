@@ -2,10 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 import CtaCluster from '../components/CtaCluster.astro';
+import PhoneMockup from '../components/PhoneMockup.astro';
 import SectionIntro from '../components/SectionIntro.astro';
 import { featuresPage, primaryCta, secondaryCta } from '../data/site';
 
-const { hero, overview, indexLinks, sections, proof, cta } = featuresPage;
+const { hero, overview, showcase, indexLinks, sections, cta } = featuresPage;
 ---
 
 <BaseLayout title={featuresPage.title} description={featuresPage.description} pageName={featuresPage.pageName}>
@@ -36,6 +37,27 @@ const { hero, overview, indexLinks, sections, proof, cta } = featuresPage;
           <p>{card.body}</p>
         </article>
       ))}
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="visual-break visual-break--brand">
+      <div class="visual-break__content">
+        <p class="hero__pill hero__pill--inline">{showcase.eyebrow}</p>
+        <h2>{showcase.title}</h2>
+        <p class="section-intro__body">{showcase.body}</p>
+        <div class="visual-break__chips">
+          {showcase.chips.map((item) => (
+            <span class="visual-chip">{item}</span>
+          ))}
+        </div>
+      </div>
+
+      <div class="visual-break__visual">
+        <PhoneMockup {...showcase.mockup} />
+        <div class="visual-break__badge visual-break__badge--top">{showcase.badges[0]}</div>
+        <div class="visual-break__badge visual-break__badge--bottom">{showcase.badges[1]}</div>
+      </div>
     </div>
   </section>
 
@@ -73,17 +95,6 @@ const { hero, overview, indexLinks, sections, proof, cta } = featuresPage;
           </div>
         </article>
       ))}
-    </div>
-  </section>
-
-  <section class="content-section content-section--tint">
-    <div class="split-panel split-panel--balanced">
-      <SectionIntro eyebrow="Proof Block" title={proof.title} body={proof.body} />
-      <div class="surface-card surface-card--accent">
-        <p class="surface-card__eyebrow">Why it reads clearly</p>
-        <h2>Each section shows the workflow, the benefit, and the family outcome.</h2>
-        <p>The page stays short on purpose so operators can scan it quickly and still understand the value.</p>
-      </div>
     </div>
   </section>
 
