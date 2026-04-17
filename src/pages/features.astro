@@ -4,7 +4,7 @@ import CtaBanner from '../components/CtaBanner.astro';
 import CtaCluster from '../components/CtaCluster.astro';
 import PhoneMockup from '../components/PhoneMockup.astro';
 import SectionIntro from '../components/SectionIntro.astro';
-import { featuresPage, primaryCta, secondaryCta } from '../data/site';
+import { featuresPage, featuresSecondaryCta, primaryCta } from '../data/site';
 
 const { hero, overview, showcase, indexLinks, sections, cta } = featuresPage;
 ---
@@ -16,7 +16,7 @@ const { hero, overview, showcase, indexLinks, sections, cta } = featuresPage;
         <p class="hero__eyebrow">{hero.eyebrow}</p>
         <h1>{hero.title}</h1>
         <p class="hero__lede">{hero.body}</p>
-        <CtaCluster primary={primaryCta} secondary={secondaryCta} />
+        <CtaCluster primary={primaryCta} secondary={featuresSecondaryCta} />
       </div>
     </div>
 
@@ -65,8 +65,11 @@ const { hero, overview, showcase, indexLinks, sections, cta } = featuresPage;
     <div class="feature-stack">
       {sections.map((section, index) => (
         <article id={section.id} class={`feature-block ${index % 2 === 1 ? 'feature-block--reverse' : ''}`}>
-          <div>
+          <div class="feature-block__lead">
             <SectionIntro eyebrow="Simple Workflow" title={section.title} body={section.body} />
+            <div class="feature-block__visual">
+              <PhoneMockup {...section.mockup} />
+            </div>
           </div>
 
           <div class="surface-card surface-card--feature-detail">
@@ -98,5 +101,5 @@ const { hero, overview, showcase, indexLinks, sections, cta } = featuresPage;
     </div>
   </section>
 
-  <CtaBanner eyebrow={cta.eyebrow} title={cta.title} body={cta.body} primary={primaryCta} secondary={secondaryCta} />
+  <CtaBanner eyebrow={cta.eyebrow} title={cta.title} body={cta.body} primary={primaryCta} secondary={featuresSecondaryCta} />
 </BaseLayout>

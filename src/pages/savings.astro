@@ -4,7 +4,7 @@ import CtaBanner from '../components/CtaBanner.astro';
 import CtaCluster from '../components/CtaCluster.astro';
 import PhoneMockup from '../components/PhoneMockup.astro';
 import SectionIntro from '../components/SectionIntro.astro';
-import { primaryCta, savingsPage, secondaryCta } from '../data/site';
+import { primaryCta, savingsPage, savingsSecondaryCta } from '../data/site';
 
 const { hero, snapshot, comparison, spotlight, timeBack, consolidation, cta } = savingsPage;
 ---
@@ -16,7 +16,7 @@ const { hero, snapshot, comparison, spotlight, timeBack, consolidation, cta } = 
         <p class="hero__eyebrow">{hero.eyebrow}</p>
         <h1>{hero.title}</h1>
         <p class="hero__lede">{hero.body}</p>
-        <CtaCluster primary={primaryCta} secondary={secondaryCta} />
+        <CtaCluster primary={primaryCta} secondary={savingsSecondaryCta} />
       </div>
 
       <div class="surface-card surface-card--contrast">
@@ -186,5 +186,5 @@ const { hero, snapshot, comparison, spotlight, timeBack, consolidation, cta } = 
     </div>
   </section>
 
-  <CtaBanner eyebrow={cta.eyebrow} title={cta.title} body={cta.body} primary={primaryCta} secondary={secondaryCta} />
+  <CtaBanner eyebrow={cta.eyebrow} title={cta.title} body={cta.body} primary={primaryCta} secondary={savingsSecondaryCta} />
 </BaseLayout>

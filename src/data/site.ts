@@ -62,6 +62,7 @@ export type FeatureSection = {
   operatorItems: string[];
   familyTitle: string;
   familyItems: string[];
+  mockup: PreviewMockup;
 };
 
 export type CompareItem = {
@@ -96,8 +97,8 @@ const withBase = (path: string) => {
 };
 
 export const siteMeta = {
-  name: 'MyTeam',
-  title: 'MyTeam | Simple workflows for sports program operations',
+  name: 'MyTeamHub',
+  title: 'MyTeamHub | Simple workflows for sports program operations',
   description:
     'A marketing site for sports organizations that want one clear flow for schedules, registration, payments, and family updates.',
   footerBlurb:
@@ -121,11 +122,21 @@ export const secondaryCta: CallToAction = {
   href: withBase('/features'),
 };
 
+export const featuresSecondaryCta: CallToAction = {
+  label: 'See Savings',
+  href: withBase('/savings'),
+};
+
+export const savingsSecondaryCta: CallToAction = {
+  label: 'See Setup FAQ',
+  href: withBase('/setup-faq'),
+};
+
 export const homePage = {
   pageName: 'home',
   title: siteMeta.title,
   description:
-    'MyTeam homepage for sports programs, focused on simple branded workflows for setup, signup, and family updates.',
+    'MyTeamHub homepage for sports programs, focused on simple branded workflows for setup, signup, and family updates.',
   hero: {
     eyebrow: 'Branded App For Sports Programs',
     title: 'Your program. Your app.',
@@ -187,11 +198,11 @@ export const homePage = {
     items: [
       {
         title: 'Set up your program',
-        body: 'Add logo, details, and dates.',
+        body: 'Add your logo, details, and dates.',
       },
       {
         title: 'Invite families',
-        body: 'Share one app and one path.',
+        body: 'Share one app and one clear next step.',
       },
       {
         title: 'Run the season',
@@ -200,20 +211,20 @@ export const homePage = {
     ] satisfies Step[],
   },
   showcase: {
-    title: 'See the branded experience',
+    title: 'See the branded experience that feels like your program',
     body: 'Families open your app, not a generic tool.',
     bullets: [
       {
         title: 'Your logo and colors',
-        body: 'The program looks like yours from the first tap.',
+        body: 'The experience looks like yours from the first tap.',
       },
       {
         title: 'Schedules and rosters',
-        body: 'Key details stay in one clear place.',
+        body: 'Key details stay together instead of scattered across channels.',
       },
       {
         title: 'Registration and payments',
-        body: 'The next step stays close to the program info.',
+        body: 'The next step stays close to the program information.',
       },
     ] satisfies Card[],
     note: 'One clear place for the season.',
@@ -229,42 +240,42 @@ export const homePage = {
   },
   cta: {
     eyebrow: 'Start Setup',
-    title: 'Bring your program into one clear app',
-    body: 'Set it up once. Share it with families.',
+    title: 'Bring the season into one clear app',
+    body: 'Set it up once. Share one polished experience with families.',
   },
 };
 
 export const featuresPage = {
   pageName: 'features',
-  title: 'Features | MyTeam',
+  title: 'Features | MyTeamHub',
   description:
-    'Feature overview for MyTeam, centered on the simple workflows sports program operators use every week.',
+    'Feature overview for MyTeamHub, centered on the simple workflows sports program operators use every week.',
   hero: {
     eyebrow: 'Workflow Features',
-    title: 'The core flows, in one branded app.',
+    title: 'The core flows, in one app.',
     body:
-      'Setup, schedules, signup, updates, and brand in one clearer place.',
+      'The jobs your staff repeat, and the path families follow, in one branded place.',
   },
   overview: {
-    title: 'What MyTeam covers',
-    body: 'The core jobs most programs repeat every week.',
+    title: 'What MyTeamHub covers',
+    body: 'The core jobs most programs repeat, with less back-and-forth around each one.',
     cards: [
       {
         value: 'Setup',
         title: 'Program details',
-        body: 'Dates, fees, locations.',
+        body: 'Dates, fees, and locations in one place.',
         tone: 'brand',
       },
       {
         value: 'Signup',
         title: 'Registration flow',
-        body: 'A clearer next step.',
+        body: 'A clearer next step for families.',
         tone: 'field',
       },
       {
         value: 'Brand',
         title: 'Family experience',
-        body: 'Your logo. Your colors.',
+        body: 'Your logo, colors, and tone stay visible.',
         tone: 'accent',
       },
     ] satisfies ResultCard[],
@@ -272,9 +283,9 @@ export const featuresPage = {
   showcase: {
     eyebrow: 'See The Experience',
     title: 'One branded place for families.',
-    body: 'The program looks like yours and stays easy to scan.',
+    body: 'The program looks like yours, and the next step stays easy to find.',
     chips: ['Dates and fees', 'Register here', 'See updates'],
-    badges: ['Family view', 'One clearer path'],
+    badges: ['Family view', 'Less confusion'],
     mockup: {
       label: 'Family app view',
       title: 'Club Season',
@@ -297,7 +308,7 @@ export const featuresPage = {
       id: 'publishing',
       title: 'Program page',
       body: 'Keep dates, fees, and locations together.',
-      benefit: 'Families find the basics faster.',
+      benefit: 'Less time repeating the basics.',
       operatorTitle: 'Use it to',
       operatorItems: [
         'Post the season overview',
@@ -308,6 +319,15 @@ export const featuresPage = {
         'See dates and fees fast',
         'Know the next step',
       ],
+      mockup: {
+        label: 'Program overview',
+        title: 'Fall Season',
+        items: ['Dates and fees', 'Location details', 'Register next'],
+        action: 'View program',
+        theme: 'light',
+        tone: 'brand',
+        tilt: 'none',
+      },
     },
     {
       id: 'schedules',
@@ -324,12 +344,21 @@ export const featuresPage = {
         'Check the latest timing',
         'Confirm locations quickly',
       ],
+      mockup: {
+        label: 'Schedule view',
+        title: 'This week',
+        items: ['Tuesday practice', 'Field update', 'Saturday game'],
+        action: 'Open schedule',
+        theme: 'dark',
+        tone: 'field',
+        tilt: 'none',
+      },
     },
     {
       id: 'registration',
       title: 'Signup and payment',
       body: 'Keep the action step close to the details.',
-      benefit: 'A clearer path to completion.',
+      benefit: 'A shorter path from review to action.',
       operatorTitle: 'Use it to',
       operatorItems: [
         'Show the signup step clearly',
@@ -340,6 +369,15 @@ export const featuresPage = {
         'Review what to do',
         'Finish in a clearer flow',
       ],
+      mockup: {
+        label: 'Registration flow',
+        title: 'Join the program',
+        items: ['Review details', 'Register here', 'Complete payment'],
+        action: 'Start signup',
+        theme: 'light',
+        tone: 'accent',
+        tilt: 'none',
+      },
     },
     {
       id: 'communication',
@@ -356,12 +394,21 @@ export const featuresPage = {
         'Find updates faster',
         'Understand what changed',
       ],
+      mockup: {
+        label: 'Updates feed',
+        title: 'Latest notice',
+        items: ['Practice moved', 'Reminder posted', 'New team note'],
+        action: 'Read updates',
+        theme: 'dark',
+        tone: 'brand',
+        tilt: 'none',
+      },
     },
     {
       id: 'branding',
       title: 'Your brand',
       body: 'Keep your logo and colors front and center.',
-      benefit: 'A more recognizable family experience.',
+      benefit: 'A more polished family experience.',
       operatorTitle: 'Use it to',
       operatorItems: [
         'Apply your logo and colors',
@@ -372,6 +419,15 @@ export const featuresPage = {
         'Recognize the program immediately',
         'Feel more confident they are in the right place',
       ],
+      mockup: {
+        label: 'Branded app',
+        title: 'Club identity',
+        items: ['Your logo', 'Your colors', 'Your family app'],
+        action: 'Open your app',
+        theme: 'light',
+        tone: 'brand',
+        tilt: 'none',
+      },
     },
   ] satisfies FeatureSection[],
   proof: {
@@ -381,31 +437,31 @@ export const featuresPage = {
   },
   cta: {
     eyebrow: 'Workflow Tour',
-    title: 'Start with the workflows your team repeats most',
+    title: 'Start with the workflows that cost the most time',
     body:
-      'Setup, schedules, signup, updates, and brand in one clearer flow.',
+      'Setup, schedules, signup, updates, and brand in one clearer place.',
   },
 };
 
 export const savingsPage = {
   pageName: 'savings',
-  title: 'Savings | MyTeam',
+  title: 'Savings | MyTeamHub',
   description:
-    'Operational savings page for MyTeam focused on how simpler workflows reduce repeat work and tool sprawl.',
+    'Operational savings page for MyTeamHub focused on how simpler workflows reduce repeat work and tool sprawl.',
   hero: {
     eyebrow: 'Operational Savings',
-    title: 'Keep the core flow together.',
+    title: 'Keep it together.',
     body:
-      'Keep more of the program flow in one place.',
+      'Keep more of the program flow in one place and spend less time reconnecting the same details.',
   },
   snapshot: {
-    title: 'Fewer resets.',
-    body: 'Fewer tool hops. Fewer repeated answers. Clearer next steps.',
+    title: 'Less wasted time.',
+    body: 'Fewer tool hops. Less manual cleanup. Easier reporting and review.',
   },
   comparison: {
-    title: 'Before and after',
-    body: 'What changes when the workflow stays together.',
-    beforeLabel: 'Without MyTeam',
+    title: 'Before. After.',
+    body: 'What teams stop repeating when the workflow stays together.',
+    beforeLabel: 'Without MyTeamHub',
     beforeItems: [
       {
         title: 'Updates copied everywhere',
@@ -420,7 +476,7 @@ export const savingsPage = {
         body: 'The next step is harder to follow.',
       },
     ] satisfies CompareItem[],
-    afterLabel: 'With MyTeam',
+    afterLabel: 'With MyTeamHub',
     afterItems: [
       {
         title: 'Post in one clearer place',
@@ -438,9 +494,9 @@ export const savingsPage = {
   },
   spotlight: {
     eyebrow: 'See It In Practice',
-    title: 'Savings show up every day.',
-    body: 'Same details. Fewer resets between tools.',
-    chips: ['One place to post', 'One place to check', 'Fewer repeated answers'],
+    title: 'Daily savings.',
+    body: 'Same details. Less cleanup. Easier follow-through for staff and families.',
+    chips: ['One place to post', 'Less cleanup later', 'Reports easier to pull'],
     badges: ['Operator flow', 'Family path'],
     mockup: {
       label: 'Operator view',
@@ -453,8 +509,8 @@ export const savingsPage = {
     } satisfies PreviewMockup,
   },
   timeBack: {
-    title: 'Where time comes back',
-    body: 'Common jobs that get simpler.',
+    title: 'Time back.',
+    body: 'Common jobs that stop stealing time, including upkeep after launch.',
     cards: [
       {
         title: 'Announcements',
@@ -491,9 +547,9 @@ export const savingsPage = {
     ] satisfies SavingsCard[],
   },
   consolidation: {
-    title: 'One platform, fewer tools',
+    title: 'Fewer tools.',
     body:
-      'The real value is bringing more of the workflow together.',
+      'The real value is fewer tools to manage and fewer places to double-check.',
     leftTitle: 'Teams often juggle',
     leftItems: [
       {
@@ -513,38 +569,39 @@ export const savingsPage = {
         body: 'Another handoff before a family finishes the next step.',
       },
     ] satisfies ToolItem[],
-    rightTitle: 'MyTeam brings together',
+    rightTitle: 'MyTeamHub brings together',
     rightItems: [
       'Program details and branded pages',
       'Registration and payment flow',
       'Schedules and updates',
+      'A simpler rhythm for upkeep and reporting',
       'One clearer family-facing experience',
     ],
     note:
-      'Check your current stack before using exact savings numbers.',
+      'Review your current stack before turning this into an exact savings number.',
   },
   cta: {
     eyebrow: 'Simplify The Workflow',
-    title: 'Start with the busiest workflow',
+    title: 'Start with one flow.',
     body:
-      'Keep more of the daily rhythm in one clearer flow.',
+      'Start with the part of the workflow that creates the most rework today.',
   },
 };
 
 export const setupFaqPage = {
   pageName: 'setup-faq',
-  title: 'Setup FAQ | MyTeam',
+  title: 'Setup FAQ | MyTeamHub',
   description:
-    'Setup FAQ for MyTeam covering fit, rollout expectations, and workflow readiness before launch.',
+    'Setup FAQ for MyTeamHub covering fit, rollout expectations, and workflow readiness before launch.',
   hero: {
     eyebrow: 'Setup FAQ',
-    title: 'Plan the rollout before you share it with families.',
+    title: 'Set it up once. Share it with confidence.',
     body:
-      'Use this page to confirm fit, understand the rollout path, and make sure the family-facing experience feels clear before launch.',
+      'Confirm fit, prepare the rollout, and make the family-facing experience feel obvious before launch.',
   },
   example: {
     eyebrow: 'Illustrative Brand View',
-    title: 'See how your program can look inside MyTeam.',
+    title: 'See how your program can look inside MyTeamHub.',
     body:
       'The goal is simple: families should see your brand, your program details, and the next step in one clear experience.',
     bullets: [
@@ -564,12 +621,12 @@ export const setupFaqPage = {
   },
   audiencesIntro: {
     title: 'Built for sports program operators',
-    body: 'Clubs, camps, and leagues that need a clearer program workflow for both staff and families.',
+    body: 'Clubs, camps, and leagues that want a polished workflow without a technical learning curve.',
   },
   audiences: [
     {
       title: 'Club Directors',
-      body: 'For leaders who want one clearer place for schedules, registration, payments, and family updates.',
+      body: 'For leaders who want one polished place for schedules, registration, payments, and family updates.',
     },
     {
       title: 'Camp Operators',
@@ -583,11 +640,11 @@ export const setupFaqPage = {
   setupSteps: [
     {
       title: 'Create your program account',
-      body: 'Start with the core program name, sport, and admin details you need for setup.',
+      body: 'Start with the core name, sport, and admin details you need to get moving.',
     },
     {
       title: 'Add your brand and program details',
-      body: 'Upload the logo, define the presentation, and organize the dates, fees, and locations families need first.',
+      body: 'Upload the logo, shape the presentation, and organize the dates, fees, and locations families need first.',
     },
     {
       title: 'Set the family flow',
@@ -595,18 +652,19 @@ export const setupFaqPage = {
     },
     {
       title: 'Review before launch',
-      body: 'Check the live experience carefully so the public-facing path feels clear before you share it.',
+      body: 'Review the live experience carefully so the public-facing path feels clear before you share it.',
     },
   ] satisfies Step[],
   experience: {
-    title: 'The operator side and the family side should both feel clear',
+    title: 'The operator side and the family side should both feel obvious',
     body:
-      'A strong rollout gives staff a simpler system to maintain and gives families a clearer experience to follow.',
+      'A strong rollout gives staff less explaining to do and gives families a clearer experience to follow.',
     operator: {
       title: 'As the operator',
       bullets: [
         'Keep program details, schedules, and updates organized in one place',
         'Set the registration and payment path more clearly before launch',
+        'Run the day-to-day workflow without needing a deeply technical setup process',
         'Review the public-facing experience before sharing it with families',
       ],
     },
@@ -622,7 +680,7 @@ export const setupFaqPage = {
   trust: {
     title: 'What families should feel before launch',
     body:
-      'Clear expectations build trust faster than long explanations. The setup should feel straightforward before the first family sees it.',
+      'Clear expectations build trust faster than long explanations. The setup should feel polished and straightforward before the first family sees it.',
     cards: [
       {
         title: 'Clear next steps',
@@ -643,9 +701,9 @@ export const setupFaqPage = {
   },
   faqs: [
     {
-      question: 'Is MyTeam a fit for my type of program?',
+      question: 'Is MyTeamHub a fit for my type of program?',
       answer:
-        'MyTeam is built for sports program operators who want a clearer public-facing and family-facing experience around core program workflows.',
+        'MyTeamHub is built for sports program operators who want a clearer public-facing and family-facing experience around core program workflows.',
     },
     {
       question: 'How should I think about setup?',
@@ -662,19 +720,24 @@ export const setupFaqPage = {
         'Review the branding, program details, schedules, registration step, payment expectations, and update paths so the experience feels clear before you share it.',
     },
     {
-      question: 'Can I use MyTeam across multiple teams or divisions?',
+      question: 'Can I use MyTeamHub across multiple teams or divisions?',
       answer:
-        'MyTeam is designed for programs that need a more consistent structure across teams, divisions, and family-facing information. Plan the exact setup around how your organization is organized today.',
+        'MyTeamHub is designed for programs that need a more consistent structure across teams, divisions, and family-facing information. Plan the exact setup around how your organization is organized today.',
     },
     {
       question: 'How should I think about the payment step?',
       answer:
         'Treat the payment step as part of the overall family flow. Keep expectations clear, review the experience carefully, and make sure families understand what happens next.',
     },
+    {
+      question: 'Do I need to be tech-savvy to use MyTeamHub?',
+      answer:
+        'No. MyTeamHub is meant to feel straightforward for everyday operators. The goal is a clear setup, a clear family path, and less manual upkeep once the program is live.',
+    },
   ] satisfies FaqItem[],
   cta: {
     eyebrow: 'Rollout Planning',
-    title: 'Start with a rollout plan that feels clear before launch',
+    title: 'Launch with a plan that feels clear before launch',
     body:
       'Use the setup page to reduce uncertainty and prepare a cleaner family-facing experience before launch.',
   },
