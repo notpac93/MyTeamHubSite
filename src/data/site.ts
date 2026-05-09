@@ -97,8 +97,8 @@ const withBase = (path: string) => {
 };
 
 export const siteMeta = {
-  name: 'MyTeamHub',
-  title: 'MyTeamHub | Simple workflows for sports program operations',
+  name: 'HuddleWay',
+  title: 'HuddleWay | Simple workflows for sports program operations',
   description:
     'A marketing site for sports organizations that want one clear flow for schedules, registration, payments, and family updates.',
   footerBlurb:
@@ -136,7 +136,7 @@ export const homePage = {
   pageName: 'home',
   title: siteMeta.title,
   description:
-    'MyTeamHub homepage for sports programs, focused on simple branded workflows for setup, signup, and family updates.',
+    'HuddleWay homepage for sports programs, focused on simple branded workflows for setup, signup, and family updates.',
   hero: {
     eyebrow: 'Branded App For Sports Programs',
     title: 'Your program. Your app.',
@@ -247,9 +247,9 @@ export const homePage = {
 
 export const featuresPage = {
   pageName: 'features',
-  title: 'Features | MyTeamHub',
+  title: 'Features | HuddleWay',
   description:
-    'Feature overview for MyTeamHub, centered on the simple workflows sports program operators use every week.',
+    'Feature overview for HuddleWay, centered on the simple workflows sports program operators use every week.',
   hero: {
     eyebrow: 'Workflow Features',
     title: 'The core flows, in one app.',
@@ -257,7 +257,7 @@ export const featuresPage = {
       'The jobs your staff repeat, and the path families follow, in one branded place.',
   },
   overview: {
-    title: 'What MyTeamHub covers',
+    title: 'What HuddleWay covers',
     body: 'The core jobs most programs repeat, with less back-and-forth around each one.',
     cards: [
       {
@@ -445,9 +445,9 @@ export const featuresPage = {
 
 export const savingsPage = {
   pageName: 'savings',
-  title: 'Savings | MyTeamHub',
+  title: 'Savings | HuddleWay',
   description:
-    'Operational savings page for MyTeamHub focused on how simpler workflows reduce repeat work and tool sprawl.',
+    'Operational savings page for HuddleWay focused on how simpler workflows reduce repeat work and tool sprawl.',
   hero: {
     eyebrow: 'Operational Savings',
     title: 'Keep it together.',
@@ -461,7 +461,7 @@ export const savingsPage = {
   comparison: {
     title: 'Before. After.',
     body: 'What teams stop repeating when the workflow stays together.',
-    beforeLabel: 'Without MyTeamHub',
+    beforeLabel: 'Without HuddleWay',
     beforeItems: [
       {
         title: 'Updates copied everywhere',
@@ -476,7 +476,7 @@ export const savingsPage = {
         body: 'The next step is harder to follow.',
       },
     ] satisfies CompareItem[],
-    afterLabel: 'With MyTeamHub',
+    afterLabel: 'With HuddleWay',
     afterItems: [
       {
         title: 'Post in one clearer place',
@@ -569,7 +569,7 @@ export const savingsPage = {
         body: 'Another handoff before a family finishes the next step.',
       },
     ] satisfies ToolItem[],
-    rightTitle: 'MyTeamHub brings together',
+    rightTitle: 'HuddleWay brings together',
     rightItems: [
       'Program details and branded pages',
       'Registration and payment flow',
@@ -590,9 +590,9 @@ export const savingsPage = {
 
 export const setupFaqPage = {
   pageName: 'setup-faq',
-  title: 'Setup FAQ | MyTeamHub',
+  title: 'Setup FAQ | HuddleWay',
   description:
-    'Setup FAQ for MyTeamHub covering fit, rollout expectations, and workflow readiness before launch.',
+    'Setup FAQ for HuddleWay covering fit, rollout expectations, and workflow readiness before launch.',
   hero: {
     eyebrow: 'Setup FAQ',
     title: 'Set it up once. Share it with confidence.',
@@ -601,7 +601,7 @@ export const setupFaqPage = {
   },
   example: {
     eyebrow: 'Illustrative Brand View',
-    title: 'See how your program can look inside MyTeamHub.',
+    title: 'See how your program can look inside HuddleWay.',
     body:
       'The goal is simple: families should see your brand, your program details, and the next step in one clear experience.',
     bullets: [
@@ -701,9 +701,9 @@ export const setupFaqPage = {
   },
   faqs: [
     {
-      question: 'Is MyTeamHub a fit for my type of program?',
+      question: 'Is HuddleWay a fit for my type of program?',
       answer:
-        'MyTeamHub is built for sports program operators who want a clearer public-facing and family-facing experience around core program workflows.',
+        'HuddleWay is built for sports program operators who want a clearer public-facing and family-facing experience around core program workflows.',
     },
     {
       question: 'How should I think about setup?',
@@ -720,9 +720,9 @@ export const setupFaqPage = {
         'Review the branding, program details, schedules, registration step, payment expectations, and update paths so the experience feels clear before you share it.',
     },
     {
-      question: 'Can I use MyTeamHub across multiple teams or divisions?',
+      question: 'Can I use HuddleWay across multiple teams or divisions?',
       answer:
-        'MyTeamHub is designed for programs that need a more consistent structure across teams, divisions, and family-facing information. Plan the exact setup around how your organization is organized today.',
+        'HuddleWay is designed for programs that need a more consistent structure across teams, divisions, and family-facing information. Plan the exact setup around how your organization is organized today.',
     },
     {
       question: 'How should I think about the payment step?',
@@ -730,9 +730,9 @@ export const setupFaqPage = {
         'Treat the payment step as part of the overall family flow. Keep expectations clear, review the experience carefully, and make sure families understand what happens next.',
     },
     {
-      question: 'Do I need to be tech-savvy to use MyTeamHub?',
+      question: 'Do I need to be tech-savvy to use HuddleWay?',
       answer:
-        'No. MyTeamHub is meant to feel straightforward for everyday operators. The goal is a clear setup, a clear family path, and less manual upkeep once the program is live.',
+        'No. HuddleWay is meant to feel straightforward for everyday operators. The goal is a clear setup, a clear family path, and less manual upkeep once the program is live.',
     },
   ] satisfies FaqItem[],
   cta: {
