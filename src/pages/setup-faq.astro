@@ -72,7 +72,7 @@ const { hero, example, audiencesIntro, audiences, setupSteps, experience, trust,
   </section>
 
   <section class="content-section content-section--tint" id="setup-steps">
-    <SectionIntro eyebrow="How It Works" title="Get set up in 4 clear steps" body="Move from initial setup to a launch-ready family experience with a cleaner review path." align="center" />
+    <SectionIntro eyebrow="How It Works" title="Get set up in 4 clear steps" body="Move from initial setup to a launch-ready family app and admin workflow with a cleaner review path." align="center" />
     <div class="setup-step-stack">
       {setupSteps.map((step, index) => (
         <article class="setup-step-card">
@@ -123,7 +123,7 @@ const { hero, example, audiencesIntro, audiences, setupSteps, experience, trust,
   </section>
 
   <section class="content-section">
-    <SectionIntro eyebrow="Launch Confidence" title={trust.title} body={trust.body} align="center" />
+    <SectionIntro eyebrow="Trust And Review" title={trust.title} body={trust.body} align="center" />
     <div class="result-grid">
       {trust.cards.map((card) => (
         <article class={`result-card result-card--${card.tone ?? 'brand'}`}>

@@ -98,11 +98,11 @@ const withBase = (path: string) => {
 
 export const siteMeta = {
   name: 'HuddleWay',
-  title: 'HuddleWay | Simple workflows for sports program operations',
+  title: 'HuddleWay | One app for families, one system for admins',
   description:
-    'A marketing site for sports organizations that want one clear flow for schedules, registration, payments, and family updates.',
+    'HuddleWay gives families one app for schedules, updates, and registration while admins manage pages, events, payments, and updates from one system.',
   footerBlurb:
-    'Built for sports organizations that want one clear place to publish program details, guide signup, and keep families informed.',
+    'Built for sports programs that want one clear app for families and one simple system to manage pages, events, registration, payments, and updates.',
 };
 
 export const navigation: Link[] = [
@@ -136,17 +136,17 @@ export const homePage = {
   pageName: 'home',
   title: siteMeta.title,
   description:
-    'HuddleWay homepage for sports programs, focused on simple branded workflows for setup, signup, and family updates.',
+    'HuddleWay homepage for sports programs that want one app for families and one simple system for admins.',
   hero: {
-    eyebrow: 'Branded App For Sports Programs',
-    title: 'Your program. Your app.',
-    body: 'Schedules, signup, payments, and updates in one place.',
+    eyebrow: 'One App For Families. One System For Admins.',
+    title: 'The app families keep on their phones. The system admins use every day.',
+    body: 'Families can find schedules, updates, and registration in one place. Admins can manage pages, events, registration, payments, and updates from one system.',
   },
-  heroPill: 'Launch a branded family app',
+  heroPill: 'A trusted app for families, built-in tools for admins',
   quickChecks: [
-    'Your logo',
-    'One app',
-    'Clear updates',
+    'Schedules and updates',
+    'Registration and payments',
+    'Pages and events',
   ],
   heroVisuals: [
     {
@@ -170,64 +170,64 @@ export const homePage = {
   ] satisfies PreviewMockup[],
   results: {
     title: 'What your program gets',
-    body: 'Less admin. Clearer steps. A stronger brand.',
+    body: 'Save time, stay organized, and give families a clearer experience.',
     cards: [
       {
         value: 'One place',
-        title: 'Schedules and updates',
-        body: 'Families know where to look.',
+        title: 'Families know where to look',
+        body: 'Schedules, updates, and registration stay together in one app.',
         tone: 'brand',
       },
       {
-        value: 'Less chasing',
-        title: 'Registration and payments',
-        body: 'Fewer repeat questions.',
+        value: 'One system',
+        title: 'Admins manage the day-to-day work',
+        body: 'Pages, events, registration, payments, and updates stay in one workflow.',
         tone: 'field',
       },
       {
-        value: 'Your brand',
-        title: 'Front and center',
-        body: 'Logo, colors, and name stay visible.',
+        value: 'Built-in tools',
+        title: 'A more professional experience',
+        body: 'Your logo, colors, and program details stay clear from setup through signup.',
         tone: 'accent',
       },
     ] satisfies ResultCard[],
   },
   steps: {
     title: 'From setup to live in 3 steps',
-    body: 'Upload your brand, add your program, invite families.',
+    body: 'Set up your program, publish the key details, and invite families into one clear app.',
     items: [
       {
         title: 'Set up your program',
         body: 'Add your logo, details, and dates.',
       },
       {
-        title: 'Invite families',
-        body: 'Share one app and one clear next step.',
+        title: 'Publish pages and events',
+        body: 'Keep the family-facing path and the admin workflow in one system.',
       },
       {
         title: 'Run the season',
-        body: 'Post schedules and updates.',
+        body: 'Manage registration, payments, schedules, and updates from the same place.',
       },
     ] satisfies Step[],
   },
   showcase: {
-    title: 'See the branded experience that feels like your program',
-    body: 'Families open your app, not a generic tool.',
+    title: 'See the family app that keeps the season easy to follow',
+    body: 'Families open one trusted app to find schedules, updates, and registration in one place.',
     bullets: [
       {
         title: 'Your logo and colors',
         body: 'The experience looks like yours from the first tap.',
       },
       {
-        title: 'Schedules and rosters',
-        body: 'Key details stay together instead of scattered across channels.',
+        title: 'Schedules, pages, and updates together',
+        body: 'Key details stay together instead of getting split across different tools and threads.',
       },
       {
-        title: 'Registration and payments',
-        body: 'The next step stays close to the program information.',
+        title: 'Registration and payments stay close',
+        body: 'The next step stays near the program details families already need.',
       },
     ] satisfies Card[],
-    note: 'One clear place for the season.',
+    note: 'One clear app for families. One simple system for admins.',
     mockup: {
       label: 'Branded club app',
       title: 'Eagle Select',
@@ -241,7 +241,7 @@ export const homePage = {
   cta: {
     eyebrow: 'Start Setup',
     title: 'Bring the season into one clear app',
-    body: 'Set it up once. Share one polished experience with families.',
+    body: 'Set it up once, then give families one app while admins manage the work in one system.',
   },
 };
 
@@ -249,41 +249,41 @@ export const featuresPage = {
   pageName: 'features',
   title: 'Features | HuddleWay',
   description:
-    'Feature overview for HuddleWay, centered on the simple workflows sports program operators use every week.',
+    'Feature overview for HuddleWay, centered on the family app experience and the admin workflows sports programs use every week.',
   hero: {
     eyebrow: 'Workflow Features',
-    title: 'The core flows, in one app.',
+    title: 'A simple all-in-one management tool with a clear family app built in.',
     body:
-      'The jobs your staff repeat, and the path families follow, in one branded place.',
+      'Admins can manage pages, events, registration, payments, and updates from one system while families follow the same program in the app on their phones.',
   },
   overview: {
     title: 'What HuddleWay covers',
-    body: 'The core jobs most programs repeat, with less back-and-forth around each one.',
+    body: 'The built-in tools many programs already need, without making families bounce between separate steps.',
     cards: [
       {
         value: 'Setup',
-        title: 'Program details',
-        body: 'Dates, fees, and locations in one place.',
+        title: 'Pages and program details',
+        body: 'Dates, fees, locations, and key pages stay in one system.',
         tone: 'brand',
       },
       {
-        value: 'Signup',
-        title: 'Registration flow',
-        body: 'A clearer next step for families.',
+        value: 'Operations',
+        title: 'Events, registration, and payments',
+        body: 'Admins manage the day-to-day workflow without splitting it apart.',
         tone: 'field',
       },
       {
-        value: 'Brand',
-        title: 'Family experience',
-        body: 'Your logo, colors, and tone stay visible.',
+        value: 'Family app',
+        title: 'Schedules, updates, and next steps',
+        body: 'Families can find what they need in one place on the phone.',
         tone: 'accent',
       },
     ] satisfies ResultCard[],
   },
   showcase: {
     eyebrow: 'See The Experience',
-    title: 'One branded place for families.',
-    body: 'The program looks like yours, and the next step stays easy to find.',
+    title: 'One family app connected to one admin system.',
+    body: 'The program looks like yours, the next step stays easy to find, and admins update the same system behind it.',
     chips: ['Dates and fees', 'Register here', 'See updates'],
     badges: ['Family view', 'Less confusion'],
     mockup: {
@@ -298,21 +298,21 @@ export const featuresPage = {
   },
   indexLinks: [
     { label: 'Setup', href: '#publishing' },
-    { label: 'Schedules', href: '#schedules' },
-    { label: 'Signup', href: '#registration' },
+    { label: 'Events', href: '#schedules' },
+    { label: 'Registration', href: '#registration' },
     { label: 'Updates', href: '#communication' },
     { label: 'Brand', href: '#branding' },
   ] satisfies Link[],
   sections: [
     {
       id: 'publishing',
-      title: 'Program page',
-      body: 'Keep dates, fees, and locations together.',
+      title: 'Pages and program details',
+      body: 'Keep dates, fees, locations, and core program pages together.',
       benefit: 'Less time repeating the basics.',
       operatorTitle: 'Use it to',
       operatorItems: [
-        'Post the season overview',
-        'Update details once',
+        'Manage the season overview and key pages',
+        'Update core details once',
       ],
       familyTitle: 'Families can',
       familyItems: [
@@ -331,18 +331,18 @@ export const featuresPage = {
     },
     {
       id: 'schedules',
-      title: 'Schedules',
-      body: 'Keep time and location changes easy to track.',
+      title: 'Events and schedules',
+      body: 'Keep time, location, and event changes easy to track.',
       benefit: 'Less resending when plans change.',
       operatorTitle: 'Use it to',
       operatorItems: [
-        'Post dates and changes',
-        'Update the latest schedule once',
+        'Post event dates and schedule changes',
+        'Update the latest timing once',
       ],
       familyTitle: 'Families can',
       familyItems: [
         'Check the latest timing',
-        'Confirm locations quickly',
+        'Confirm locations and event details quickly',
       ],
       mockup: {
         label: 'Schedule view',
@@ -361,13 +361,13 @@ export const featuresPage = {
       benefit: 'A shorter path from review to action.',
       operatorTitle: 'Use it to',
       operatorItems: [
-        'Show the signup step clearly',
-        'Keep payment expectations close',
+        'Show the registration step clearly',
+        'Keep payment expectations close to signup',
       ],
       familyTitle: 'Families can',
       familyItems: [
         'Review what to do',
-        'Finish in a clearer flow',
+        'Finish registration in a clearer flow',
       ],
       mockup: {
         label: 'Registration flow',
@@ -433,13 +433,13 @@ export const featuresPage = {
   proof: {
     title: 'The page stays focused on the workflows that matter',
     body:
-      'No feature sprawl. Just the jobs most programs repeat every week and the clearer family experience those jobs support.',
+      'No feature sprawl. Just the built-in tools many programs already use to manage the day-to-day work and the clearer family experience those tools support.',
   },
   cta: {
     eyebrow: 'Workflow Tour',
     title: 'Start with the workflows that cost the most time',
     body:
-      'Setup, schedules, signup, updates, and brand in one clearer place.',
+      'Pages, events, registration, payments, updates, and brand in one clearer system.',
   },
 };
 
@@ -447,12 +447,12 @@ export const savingsPage = {
   pageName: 'savings',
   title: 'Savings | HuddleWay',
   description:
-    'Operational savings page for HuddleWay focused on how simpler workflows reduce repeat work and tool sprawl.',
+    'Operational savings page for HuddleWay focused on how one family app and one admin system reduce repeat work and tool sprawl.',
   hero: {
     eyebrow: 'Operational Savings',
     title: 'Keep it together.',
     body:
-      'Keep more of the program flow in one place and spend less time reconnecting the same details.',
+      'Keep the family app and the admin workflow in one system so staff spend less time reconnecting the same details.',
   },
   snapshot: {
     title: 'Less wasted time.',
@@ -484,18 +484,18 @@ export const savingsPage = {
       },
       {
         title: 'Signup stays connected',
-        body: 'Signup and payment feel more connected.',
+        body: 'Registration and payment stay in the same system.',
       },
       {
         title: 'Give families one path',
-        body: 'Brand, details, and next steps stay together.',
+        body: 'Brand, details, updates, and next steps stay together.',
       },
     ] satisfies CompareItem[],
   },
   spotlight: {
     eyebrow: 'See It In Practice',
     title: 'Daily savings.',
-    body: 'Same details. Less cleanup. Easier follow-through for staff and families.',
+    body: 'Same details. Less cleanup. Easier follow-through for admins and families.',
     chips: ['One place to post', 'Less cleanup later', 'Reports easier to pull'],
     badges: ['Operator flow', 'Family path'],
     mockup: {
@@ -571,7 +571,7 @@ export const savingsPage = {
     ] satisfies ToolItem[],
     rightTitle: 'HuddleWay brings together',
     rightItems: [
-      'Program details and branded pages',
+      'Program details, branded pages, and events',
       'Registration and payment flow',
       'Schedules and updates',
       'A simpler rhythm for upkeep and reporting',
@@ -592,18 +592,18 @@ export const setupFaqPage = {
   pageName: 'setup-faq',
   title: 'Setup FAQ | HuddleWay',
   description:
-    'Setup FAQ for HuddleWay covering fit, rollout expectations, and workflow readiness before launch.',
+    'Setup FAQ for HuddleWay covering fit, rollout expectations, and how the family app and admin system work before launch.',
   hero: {
     eyebrow: 'Setup FAQ',
     title: 'Set it up once. Share it with confidence.',
     body:
-      'Confirm fit, prepare the rollout, and make the family-facing experience feel obvious before launch.',
+      'Confirm fit, prepare the rollout, and review both the family app and the admin workflow before launch.',
   },
   example: {
     eyebrow: 'Illustrative Brand View',
     title: 'See how your program can look inside HuddleWay.',
     body:
-      'The goal is simple: families should see your brand, your program details, and the next step in one clear experience.',
+      'The goal is simple: families should see your brand, your program details, and the next step in one clear app on the phone.',
     bullets: [
       'Your logo and colors stay visible',
       'Program details and next steps stay together',
@@ -621,20 +621,20 @@ export const setupFaqPage = {
   },
   audiencesIntro: {
     title: 'Built for sports program operators',
-    body: 'Clubs, camps, and leagues that want a polished workflow without a technical learning curve.',
+    body: 'Clubs, camps, and leagues that want one clear family app and one simple system for day-to-day management.',
   },
   audiences: [
     {
       title: 'Club Directors',
-      body: 'For leaders who want one polished place for schedules, registration, payments, and family updates.',
+      body: 'For leaders who want one system to manage pages, events, registration, payments, and family updates.',
     },
     {
       title: 'Camp Operators',
-      body: 'For programs that need a cleaner family path from program details to sign-up and weekly updates.',
+      body: 'For programs that need one app families can use for schedules, updates, and registration.',
     },
     {
       title: 'League Administrators',
-      body: 'For organizations that need a more consistent structure across teams, divisions, and family-facing information.',
+      body: 'For organizations that need a more consistent structure across teams, divisions, events, and family-facing information.',
     },
   ] satisfies Card[],
   setupSteps: [
@@ -648,7 +648,7 @@ export const setupFaqPage = {
     },
     {
       title: 'Set the family flow',
-      body: 'Prepare the schedule, registration, payment expectations, and update paths families will use most often.',
+      body: 'Prepare the schedules, registration, payment expectations, and update paths families will use most often.',
     },
     {
       title: 'Review before launch',
@@ -656,13 +656,13 @@ export const setupFaqPage = {
     },
   ] satisfies Step[],
   experience: {
-    title: 'The operator side and the family side should both feel obvious',
+    title: 'The admin system and the family app should both feel obvious',
     body:
-      'A strong rollout gives staff less explaining to do and gives families a clearer experience to follow.',
+      'A strong rollout gives staff one clearer management workflow and gives families one clearer app experience to follow.',
     operator: {
       title: 'As the operator',
       bullets: [
-        'Keep program details, schedules, and updates organized in one place',
+        'Keep pages, events, schedules, and updates organized in one system',
         'Set the registration and payment path more clearly before launch',
         'Run the day-to-day workflow without needing a deeply technical setup process',
         'Review the public-facing experience before sharing it with families',
@@ -672,15 +672,15 @@ export const setupFaqPage = {
       title: 'As the family',
       bullets: [
         'Find the program and understand the basics quickly',
-        'See schedules, updates, and next steps in a clearer view',
+        'See schedules, updates, and next steps in one place on the phone',
         'Follow a more consistent path for registration and payment expectations',
       ],
     },
   },
   trust: {
-    title: 'What families should feel before launch',
+    title: 'Trust comes from clear steps and controlled access',
     body:
-      'Clear expectations build trust faster than long explanations. The setup should feel polished and straightforward before the first family sees it.',
+      'Keep the trust language factual: HuddleWay supports secure activation, role-based admin controls, and a connected registration and payment path.',
     cards: [
       {
         title: 'Clear next steps',
@@ -688,13 +688,13 @@ export const setupFaqPage = {
         tone: 'brand',
       },
       {
-        title: 'Consistent presentation',
-        body: 'The program should feel recognizable from the first visit through the ongoing family experience.',
+        title: 'Role-based admin controls',
+        body: 'Admins manage the program from one system with controlled access for the operational side.',
         tone: 'field',
       },
       {
-        title: 'A dependable review pass',
-        body: 'Before rollout, staff should check the details carefully so the public-facing workflow feels ready to share.',
+        title: 'Secure activation and review',
+        body: 'Before rollout, staff should check the live details carefully so the family-facing workflow is ready to share.',
         tone: 'accent',
       },
     ] satisfies Card[],
@@ -703,26 +703,26 @@ export const setupFaqPage = {
     {
       question: 'Is HuddleWay a fit for my type of program?',
       answer:
-        'HuddleWay is built for sports program operators who want a clearer public-facing and family-facing experience around core program workflows.',
+        'HuddleWay is built for sports program operators who want one app for families and one simpler system to manage the core program workflow.',
     },
     {
       question: 'How should I think about setup?',
       answer:
-        'Think about setup as a rollout plan: create the program account, add your brand and details, set the family flow, and review the experience before launch.',
+        'Think about setup as a rollout plan: create the program account, add your brand and details, set the family flow, and review the live experience before launch.',
     },
     {
       question: 'What should families expect?',
-      answer: 'Families should expect a more consistent place to review program information, understand the next step, and check for updates.',
+      answer: 'Families should expect one app where they can review program information, understand the next step, and check for schedules and updates.',
     },
     {
       question: 'What should I review before launch?',
       answer:
-        'Review the branding, program details, schedules, registration step, payment expectations, and update paths so the experience feels clear before you share it.',
+        'Review the branding, program details, pages, schedules, registration step, payment expectations, and update paths so the experience feels clear before you share it.',
     },
     {
       question: 'Can I use HuddleWay across multiple teams or divisions?',
       answer:
-        'HuddleWay is designed for programs that need a more consistent structure across teams, divisions, and family-facing information. Plan the exact setup around how your organization is organized today.',
+        'HuddleWay is designed for programs that need a more consistent structure across teams, divisions, events, and family information. Plan the exact setup around how your organization is organized today.',
     },
     {
       question: 'How should I think about the payment step?',
@@ -739,6 +739,6 @@ export const setupFaqPage = {
     eyebrow: 'Rollout Planning',
     title: 'Launch with a plan that feels clear before launch',
     body:
-      'Use the setup page to reduce uncertainty and prepare a cleaner family-facing experience before launch.',
+      'Use the setup page to reduce uncertainty and prepare a clearer family app and admin workflow before launch.',
   },
 };
