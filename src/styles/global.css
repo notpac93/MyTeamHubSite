@@ -145,14 +145,21 @@ h3 {
 }
 
 .brand__mark {
-  display: inline-grid;
-  place-items: center;
-  width: 2.35rem;
-  height: 2.35rem;
-  border-radius: 0.85rem;
-  background: linear-gradient(135deg, var(--brand), var(--brand-deep));
-  color: white;
-  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border-radius: 0.8rem;
+}
+
+.brand__mark img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .site-nav {

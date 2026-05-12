@@ -6,9 +6,10 @@ interface Props {
   title: string;
   description: string;
   pageName?: string;
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const { title, description, pageName = 'default' } = Astro.props;
+const { title, description, pageName = 'default', structuredData } = Astro.props;
 const pathname = Astro.url.pathname;
 const toStaticFile = (value: string) => {
   const [pathOnly] = value.split('#');
@@ -26,6 +27,38 @@ const toStaticFile = (value: string) => {
 
 const homeHref = navigation[0]?.href ?? 'index.html';
 const currentFile = toStaticFile(pathname);
+const siteUrl = Astro.site ?? new URL('https://huddleway.com');
+const normalizedPathname = (() => {
+  if (pathname === '/index.html' || pathname === '/') {
+    return '/';
+  }
+
+  const withoutIndex = pathname.replace(/\/index\.html$/, '/');
+  const withoutHtml = withoutIndex.replace(/\.html$/, '');
+  const withoutTrailingSlash = withoutHtml !== '/' ? withoutHtml.replace(/\/$/, '') : withoutHtml;
+
+  return withoutTrailingSlash || '/';
+})();
+const canonicalUrl = new URL(normalizedPathname, siteUrl).toString();
+const schemaItems: Record<string, unknown>[] = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: siteMeta.name,
+    url: siteUrl.toString(),
+    description: siteMeta.description,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: siteMeta.name,
+    url: siteUrl.toString(),
+  },
+];
+
+if (structuredData) {
+  schemaItems.push(...(Array.isArray(structuredData) ? structuredData : [structuredData]));
+}
 ---
 
 <!doctype html>
@@ -35,6 +68,22 @@ const currentFile = toStaticFile(pathname);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.png" sizes="any" type="image/png" />
+    <link rel="shortcut icon" href="/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteMeta.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {schemaItems.map((item) => (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(item)} />
+    ))}
   </head>
   <body class={`page page--${pageName}`}>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -42,7 +91,7 @@ const currentFile = toStaticFile(pathname);
       <header class="site-header">
         <div class="site-header__inner">
           <a class="brand" href={homeHref}>
-            <span class="brand__mark">H</span>
+            <span class="brand__mark" aria-hidden="true"><img src="/logo-mark.png" alt="" /></span>
             <span class="brand__text">{siteMeta.name}</span>
           </a>
 
@@ -70,7 +119,7 @@ const currentFile = toStaticFile(pathname);
         <div class="site-footer__grid">
           <div>
             <a class="brand brand--footer" href={homeHref}>
-              <span class="brand__mark">H</span>
+              <span class="brand__mark" aria-hidden="true"><img src="/logo-mark.png" alt="" /></span>
               <span class="brand__text">{siteMeta.name}</span>
             </a>
             <p class="site-footer__blurb">{siteMeta.footerBlurb}</p>

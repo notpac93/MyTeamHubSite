@@ -8,9 +8,21 @@ import SectionIntro from '../components/SectionIntro.astro';
 import { primaryCta, secondaryCta, setupFaqPage } from '../data/site';
 
 const { hero, example, audiencesIntro, audiences, setupSteps, experience, trust, faqs, cta } = setupFaqPage;
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
 ---
 
-<BaseLayout title={setupFaqPage.title} description={setupFaqPage.description} pageName={setupFaqPage.pageName}>
+<BaseLayout title={setupFaqPage.title} description={setupFaqPage.description} pageName={setupFaqPage.pageName} structuredData={faqSchema}>
   <section class="hero hero--inner">
     <div class="hero__grid hero__grid--single">
       <div class="hero__copy hero__copy--wide">

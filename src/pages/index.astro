@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaBanner from '../components/CtaBanner.astro';
+import BrandTransition from '../components/BrandTransition.astro';
 import CtaCluster from '../components/CtaCluster.astro';
 import PhoneMockup from '../components/PhoneMockup.astro';
 import SectionIntro from '../components/SectionIntro.astro';
@@ -72,6 +73,8 @@ const { hero, heroPill, quickChecks, heroVisuals, results, steps, showcase, cta 
       ))}
     </div>
   </section>
+
+  <BrandTransition />
 
   <section class="content-section content-section--tint">
     <SectionIntro eyebrow="How It Works" title={steps.title} body={steps.body} align="center" />
