@@ -1,11 +1,21 @@
-<section class="content-section brand-transition" aria-labelledby="brand-transition-title">
+---
+const clientExample = {
+  logoSrc: '/client-example-logo.png',
+  name: 'Program page',
+  sourceLabel: 'Base app',
+  targetLabel: 'Program page',
+  sourceTitle: 'HuddleWay',
+  targetTitle: 'Select Basketball',
+  targetBody: 'Select Basketball',
+};
+---
+
+<section class="content-section brand-transition" aria-label="Branding transition example">
   <div class="brand-transition__panel">
     <div class="brand-transition__copy">
-      <p class="brand-transition__eyebrow">How Branding Comes Through</p>
-      <h2 id="brand-transition-title">Powered by HuddleWay. Presented as your app.</h2>
       <p class="brand-transition__body">
-        The app starts with HuddleWay under the hood, then shifts into your program's name, colors,
-        and identity so families open something that feels like yours.
+        Families open HuddleWay and land on your program page, with your program's name, colors,
+        and identity front and center.
       </p>
     </div>
 
@@ -20,18 +30,18 @@
           <img src="/logo-mark.png" alt="" />
         </span>
         <div>
-          <p class="brand-transition__dock-label">Base app</p>
-          <p class="brand-transition__dock-title">HuddleWay</p>
+          <p class="brand-transition__dock-label">{clientExample.sourceLabel}</p>
+          <p class="brand-transition__dock-title">{clientExample.sourceTitle}</p>
         </div>
       </div>
 
       <div class="brand-transition__dock brand-transition__dock--target">
-        <span class="brand-transition__dock-icon brand-transition__dock-icon--target">
-          <span>YC</span>
+        <span class="brand-transition__dock-icon brand-transition__dock-icon--target brand-transition__dock-icon--image">
+          <img src={clientExample.logoSrc} alt="" />
         </span>
         <div>
-          <p class="brand-transition__dock-label">Branded app</p>
-          <p class="brand-transition__dock-title">Your Club</p>
+          <p class="brand-transition__dock-label">{clientExample.targetLabel}</p>
+          <p class="brand-transition__dock-title">{clientExample.targetTitle}</p>
         </div>
       </div>
 
@@ -49,12 +59,12 @@
           </div>
 
           <div class="brand-transition__face brand-transition__face--target">
-            <span class="brand-transition__app-icon brand-transition__app-icon--target">
-              <span class="brand-transition__app-initials">YC</span>
+            <span class="brand-transition__app-icon brand-transition__app-icon--target brand-transition__app-icon--image">
+              <img src={clientExample.logoSrc} alt="" />
             </span>
             <div class="brand-transition__app-copy">
-              <p class="brand-transition__app-label">Your Club</p>
-              <p class="brand-transition__app-title">Your colors. Your name.</p>
+              <p class="brand-transition__app-label">{clientExample.name}</p>
+              <p class="brand-transition__app-title">{clientExample.targetBody}</p>
             </div>
           </div>
         </div>
@@ -69,13 +79,13 @@
 
 <style>
   .brand-transition {
-    padding-top: 1.25rem;
+    padding: 0.35rem 0 0.9rem;
   }
 
   .brand-transition__panel {
     position: relative;
     overflow: hidden;
-    padding: clamp(1.5rem, 3vw, 2.2rem);
+    padding: clamp(0.75rem, 1.8vw, 1rem);
     border: 1px solid rgba(23, 31, 46, 0.08);
     border-radius: 2rem;
     background:
@@ -88,57 +98,43 @@
   .brand-transition__copy {
     position: relative;
     z-index: 1;
-    max-width: 38rem;
-    display: grid;
-    gap: 0.9rem;
-    margin: 0 auto 2rem;
+    max-width: 48rem;
+    margin: 0 auto 0.45rem;
     text-align: center;
-  }
-
-  .brand-transition__eyebrow {
-    margin: 0;
-    font-size: 0.84rem;
-    font-weight: 800;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--brand-deep);
-  }
-
-  .brand-transition__copy h2 {
-    font-size: clamp(2.25rem, 4.6vw, 4.2rem);
-    letter-spacing: -0.06em;
   }
 
   .brand-transition__body {
     margin: 0;
-    font-size: clamp(1rem, 1.5vw, 1.18rem);
+    font-size: clamp(0.96rem, 1.1vw, 1.04rem);
+    max-width: 52rem;
+    margin-inline: auto;
   }
 
   .brand-transition__stage {
     position: relative;
-    min-height: 24rem;
-    padding: 1rem 0 2rem;
+    min-height: 12.75rem;
+    padding: 0 0 0.5rem;
   }
 
   .brand-transition__glow {
     position: absolute;
     inset: auto;
-    width: 10rem;
-    height: 10rem;
+    width: 5.5rem;
+    height: 5.5rem;
     border-radius: 999px;
-    filter: blur(16px);
-    opacity: 0.8;
+    filter: blur(14px);
+    opacity: 0.7;
   }
 
   .brand-transition__glow--left {
-    top: 2rem;
+    top: 0.15rem;
     left: 8%;
     background: rgba(17, 103, 242, 0.16);
   }
 
   .brand-transition__glow--right {
     right: 8%;
-    bottom: 2.5rem;
+    bottom: 0.25rem;
     background: rgba(236, 106, 58, 0.14);
   }
 
@@ -146,8 +142,8 @@
     position: absolute;
     left: 10%;
     right: 10%;
-    top: 52%;
-    height: 0.5rem;
+    top: 62%;
+    height: 0.35rem;
     transform: translateY(-50%);
     border-radius: 999px;
     background: linear-gradient(90deg, rgba(17, 103, 242, 0.18), rgba(17, 103, 242, 0.03) 36%, rgba(236, 106, 58, 0.03) 64%, rgba(236, 106, 58, 0.18));
@@ -155,16 +151,16 @@
 
   .brand-transition__dock {
     position: absolute;
-    top: 50%;
+    top: 62%;
     z-index: 1;
     display: inline-flex;
     align-items: center;
-    gap: 0.85rem;
-    padding: 0.85rem 1rem;
+    gap: 0.65rem;
+    padding: 0.55rem 0.65rem;
     border: 1px solid rgba(23, 31, 46, 0.08);
-    border-radius: 1.35rem;
+    border-radius: 1rem;
     background: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 14px 30px rgba(23, 31, 46, 0.08);
+    box-shadow: 0 10px 24px rgba(23, 31, 46, 0.08);
     backdrop-filter: blur(14px);
   }
 
@@ -182,10 +178,10 @@
   .brand-transition__app-icon {
     display: inline-grid;
     place-items: center;
-    width: 3.25rem;
-    height: 3.25rem;
+    width: 2.15rem;
+    height: 2.15rem;
     overflow: hidden;
-    border-radius: 1rem;
+    border-radius: 0.7rem;
     background: linear-gradient(180deg, #ffffff, #edf3ff);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.84);
   }
@@ -195,6 +191,21 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  .brand-transition__dock-icon--image,
+  .brand-transition__app-icon--image {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.85rem;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 8px 18px rgba(23, 31, 46, 0.12);
+  }
+
+  .brand-transition__dock-icon--image img,
+  .brand-transition__app-icon--image img {
+    object-fit: contain;
+    padding: 0;
   }
 
   .brand-transition__dock-icon--target,
@@ -208,7 +219,7 @@
 
   .brand-transition__dock-icon--target span,
   .brand-transition__app-initials {
-    font-size: 1.15rem;
+    font-size: 0.88rem;
     font-weight: 800;
     letter-spacing: -0.06em;
   }
@@ -216,7 +227,7 @@
   .brand-transition__dock-label,
   .brand-transition__app-label {
     margin: 0;
-    font-size: 0.76rem;
+    font-size: 0.58rem;
     font-weight: 800;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -227,17 +238,17 @@
   .brand-transition__app-title {
     margin: 0.2rem 0 0;
     color: var(--ink);
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: 700;
     line-height: 1.05;
   }
 
   .brand-transition__card-wrap {
     position: absolute;
-    top: 50%;
+    top: 62%;
     left: 8%;
     z-index: 2;
-    width: min(18rem, 58vw);
+    width: min(13rem, 46vw);
     animation: brand-card-travel 7.6s cubic-bezier(0.65, 0, 0.2, 1) infinite;
   }
 
@@ -245,22 +256,22 @@
     position: absolute;
     left: 12%;
     right: 12%;
-    bottom: -1.25rem;
-    height: 1.45rem;
+    bottom: -0.55rem;
+    height: 0.8rem;
     border-radius: 999px;
     background: rgba(14, 26, 48, 0.18);
-    filter: blur(10px);
+    filter: blur(8px);
     animation: brand-shadow-drift 7.6s cubic-bezier(0.65, 0, 0.2, 1) infinite;
   }
 
   .brand-transition__card {
     position: relative;
     overflow: hidden;
-    min-height: 9.7rem;
-    border-radius: 1.85rem;
+    min-height: 5.5rem;
+    border-radius: 1.2rem;
     border: 1px solid rgba(255, 255, 255, 0.6);
     background: rgba(255, 255, 255, 0.84);
-    box-shadow: 0 24px 44px rgba(12, 22, 36, 0.16);
+    box-shadow: 0 18px 34px rgba(12, 22, 36, 0.14);
     backdrop-filter: blur(16px);
     animation: brand-card-rock 7.6s ease-in-out infinite;
   }
@@ -279,8 +290,8 @@
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: center;
-    gap: 1rem;
-    padding: 1.15rem;
+    gap: 0.55rem;
+    padding: 0.7rem;
   }
 
   .brand-transition__face--source {
@@ -289,7 +300,16 @@
 
   .brand-transition__face--target {
     opacity: 0;
+    grid-template-columns: 3rem 1fr;
     animation: brand-face-target 7.6s linear infinite;
+  }
+
+  .brand-transition__face--target .brand-transition__app-copy {
+    gap: 0.1rem;
+  }
+
+  .brand-transition__face--target .brand-transition__app-title {
+    font-size: 0.92rem;
   }
 
   .brand-transition__app-copy {
@@ -299,9 +319,9 @@
 
   .brand-transition__signal {
     position: absolute;
-    top: 50%;
-    width: 0.9rem;
-    height: 0.9rem;
+    top: 62%;
+    width: 0.55rem;
+    height: 0.55rem;
     border-radius: 999px;
     background: rgba(17, 103, 242, 0.28);
     transform: translateY(-50%);
@@ -310,7 +330,7 @@
   .brand-transition__signal::after {
     content: '';
     position: absolute;
-    inset: -0.7rem;
+    inset: -0.55rem;
     border-radius: inherit;
     border: 1px solid currentColor;
     opacity: 0;
@@ -324,8 +344,8 @@
 
   .brand-transition__signal--two {
     left: 50%;
-    width: 1.05rem;
-    height: 1.05rem;
+    width: 0.85rem;
+    height: 0.85rem;
     color: rgba(52, 111, 243, 0.24);
   }
 
@@ -436,17 +456,27 @@
 
   @media (max-width: 960px) {
     .brand-transition__stage {
-      min-height: 21rem;
+      min-height: 11.5rem;
     }
 
     .brand-transition__dock {
-      gap: 0.7rem;
-      padding: 0.75rem 0.85rem;
+      gap: 0.45rem;
+      padding: 0.48rem 0.58rem;
     }
 
     .brand-transition__dock-title,
     .brand-transition__app-title {
-      font-size: 0.94rem;
+      font-size: 0.72rem;
+    }
+
+    .brand-transition__dock-icon--image,
+    .brand-transition__app-icon--image {
+      width: 2.65rem;
+      height: 2.65rem;
+    }
+
+    .brand-transition__card-wrap {
+      width: min(12rem, 48vw);
     }
 
     @keyframes brand-card-travel {
@@ -472,29 +502,28 @@
 
   @media (max-width: 720px) {
     .brand-transition {
-      padding-top: 0.35rem;
+      padding: 0.15rem 0 0.7rem;
     }
 
     .brand-transition__panel {
       border-radius: 1.5rem;
-      padding: 1.15rem;
+      padding: 0.8rem;
     }
 
     .brand-transition__copy {
-      margin-bottom: 1.35rem;
-      gap: 0.75rem;
+      margin-bottom: 0.45rem;
     }
 
     .brand-transition__stage {
-      min-height: 21.5rem;
-      padding-top: 0.4rem;
+      min-height: 11.75rem;
+      padding-top: 0.1rem;
     }
 
     .brand-transition__rail {
       left: 1.15rem;
       right: 1.15rem;
       top: auto;
-      bottom: 2.7rem;
+      bottom: 1.55rem;
       transform: none;
     }
 
@@ -503,8 +532,8 @@
       bottom: 0;
       transform: none;
       width: calc(50% - 0.4rem);
-      padding: 0.75rem;
-      border-radius: 1.1rem;
+      padding: 0.45rem;
+      border-radius: 0.85rem;
     }
 
     .brand-transition__dock--source {
@@ -517,40 +546,55 @@
 
     .brand-transition__dock-title,
     .brand-transition__app-title {
-      font-size: 0.88rem;
+      font-size: 0.68rem;
     }
 
     .brand-transition__dock-label,
     .brand-transition__app-label {
-      font-size: 0.68rem;
+      font-size: 0.52rem;
     }
 
     .brand-transition__dock-icon,
     .brand-transition__app-icon {
-      width: 2.8rem;
-      height: 2.8rem;
-      border-radius: 0.9rem;
+      width: 1.95rem;
+      height: 1.95rem;
+      border-radius: 0.62rem;
+    }
+
+    .brand-transition__dock-icon--image,
+    .brand-transition__app-icon--image {
+      width: 2.3rem;
+      height: 2.3rem;
+      border-radius: 0.72rem;
     }
 
     .brand-transition__card-wrap {
-      top: 2.1rem;
+      top: 1.25rem;
       left: 0.25rem;
-      width: min(15rem, calc(100% - 2.4rem));
+      width: min(10.8rem, calc(100% - 1.8rem));
     }
 
     .brand-transition__card {
-      min-height: 8.75rem;
-      border-radius: 1.5rem;
+      min-height: 4.95rem;
+      border-radius: 1rem;
     }
 
     .brand-transition__face {
-      gap: 0.8rem;
-      padding: 0.95rem;
+      gap: 0.45rem;
+      padding: 0.58rem;
+    }
+
+    .brand-transition__face--target {
+      grid-template-columns: 2.3rem 1fr;
+    }
+
+    .brand-transition__face--target .brand-transition__app-title {
+      font-size: 0.78rem;
     }
 
     .brand-transition__signal {
       top: auto;
-      bottom: 2.5rem;
+      bottom: 1.4rem;
       transform: none;
     }
 
@@ -597,9 +641,9 @@
     }
 
     .brand-transition__card-wrap {
-      top: 50%;
+      top: 58%;
       left: auto;
-      right: 7rem;
+      right: 5rem;
       transform: translateY(-50%);
     }
 
@@ -613,7 +657,7 @@
 
     @media (max-width: 720px) {
       .brand-transition__card-wrap {
-        top: 2rem;
+        top: 1.25rem;
         right: 0.5rem;
         transform: none;
       }

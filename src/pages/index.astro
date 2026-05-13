@@ -43,6 +43,8 @@ const { hero, heroPill, quickChecks, heroVisuals, results, steps, showcase, cta 
     </div>
   </section>
 
+  <BrandTransition />
+
   <section class="content-section">
     <SectionIntro eyebrow="Real Results" title={results.title} body={results.body} align="center" />
     <div class="result-grid">
@@ -73,8 +75,6 @@ const { hero, heroPill, quickChecks, heroVisuals, results, steps, showcase, cta 
       ))}
     </div>
   </section>
-
-  <BrandTransition />
 
   <section class="content-section content-section--tint">
     <SectionIntro eyebrow="How It Works" title={steps.title} body={steps.body} align="center" />
