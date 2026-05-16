@@ -6,7 +6,7 @@ import PhoneMockup from '../components/PhoneMockup.astro';
 import SectionIntro from '../components/SectionIntro.astro';
 import { primaryCta, savingsPage, savingsSecondaryCta } from '../data/site';
 
-const { hero, snapshot, comparison, spotlight, timeBack, consolidation, cta } = savingsPage;
+const { hero, snapshot, comparison, comparisonVisual, spotlight, timeBack, consolidation, cta } = savingsPage;
 ---
 
 <BaseLayout title={savingsPage.title} description={savingsPage.description} pageName={savingsPage.pageName}>
@@ -29,7 +29,7 @@ const { hero, snapshot, comparison, spotlight, timeBack, consolidation, cta } = 
 
   <section class="content-section">
     <SectionIntro title={comparison.title} body={comparison.body} align="center" />
-    <div class="compare-shell">
+    <div class="compare-shell compare-shell--showcase">
       <article class="compare-column compare-column--before">
         <div class="compare-column__header compare-column__header--before">
           <span class="compare-column__badge" aria-hidden="true">
@@ -57,6 +57,10 @@ const { hero, snapshot, comparison, spotlight, timeBack, consolidation, cta } = 
           ))}
         </div>
       </article>
+
+      <div class="compare-visual">
+        <PhoneMockup {...comparisonVisual} />
+      </div>
 
       <article class="compare-column compare-column--after">
         <div class="compare-column__header compare-column__header--after">

@@ -1,6 +1,6 @@
 ---
 const clientExample = {
-  logoSrc: '/client-example-logo.png',
+  logoSrc: '/client-example-logo-tile.png',
   name: 'Program page',
   sourceLabel: 'Base app',
   targetLabel: 'Program page',
@@ -26,7 +26,7 @@ const clientExample = {
       <div class="brand-transition__rail"></div>
 
       <div class="brand-transition__dock brand-transition__dock--source">
-        <span class="brand-transition__dock-icon">
+        <span class="brand-transition__dock-icon brand-transition__dock-icon--source-tile">
           <img src="/logo-mark.png" alt="" />
         </span>
         <div>
@@ -36,7 +36,7 @@ const clientExample = {
       </div>
 
       <div class="brand-transition__dock brand-transition__dock--target">
-        <span class="brand-transition__dock-icon brand-transition__dock-icon--target brand-transition__dock-icon--image">
+        <span class="brand-transition__dock-icon brand-transition__dock-icon--target brand-transition__dock-icon--image brand-transition__dock-icon--logo-tile">
           <img src={clientExample.logoSrc} alt="" />
         </span>
         <div>
@@ -49,7 +49,7 @@ const clientExample = {
         <div class="brand-transition__card-shadow"></div>
         <div class="brand-transition__card">
           <div class="brand-transition__face brand-transition__face--source">
-            <span class="brand-transition__app-icon">
+            <span class="brand-transition__app-icon brand-transition__app-icon--source-tile">
               <img src="/logo-mark.png" alt="" />
             </span>
             <div class="brand-transition__app-copy">
@@ -59,7 +59,7 @@ const clientExample = {
           </div>
 
           <div class="brand-transition__face brand-transition__face--target">
-            <span class="brand-transition__app-icon brand-transition__app-icon--target brand-transition__app-icon--image">
+            <span class="brand-transition__app-icon brand-transition__app-icon--target brand-transition__app-icon--image brand-transition__app-icon--logo-tile">
               <img src={clientExample.logoSrc} alt="" />
             </span>
             <div class="brand-transition__app-copy">
@@ -79,6 +79,7 @@ const clientExample = {
 
 <style>
   .brand-transition {
+    margin-top: 2.5rem;
     padding: 0.35rem 0 0.9rem;
   }
 
@@ -208,11 +209,49 @@ const clientExample = {
     padding: 0;
   }
 
+  .brand-transition__dock-icon--logo-tile,
+  .brand-transition__app-icon--logo-tile {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 12px 24px rgba(23, 31, 46, 0.14);
+  }
+
+  .brand-transition__dock-icon--logo-tile img,
+  .brand-transition__app-icon--logo-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .brand-transition__dock-icon--source-tile,
+  .brand-transition__app-icon--source-tile {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 1.18rem;
+    background:
+      radial-gradient(circle at 30% 22%, rgba(255, 255, 255, 0.22), transparent 24%),
+      linear-gradient(145deg, #2b63ea 0%, #234db9 54%, #142657 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.24),
+      inset 0 -1px 0 rgba(12, 22, 36, 0.18),
+      0 12px 24px rgba(23, 31, 46, 0.16);
+  }
+
+  .brand-transition__dock-icon--source-tile img,
+  .brand-transition__app-icon--source-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 0.36rem;
+  }
+
   .brand-transition__dock-icon--target,
   .brand-transition__app-icon--target {
     background:
-      radial-gradient(circle at 30% 28%, rgba(255, 255, 255, 0.9), transparent 28%),
-      linear-gradient(135deg, #1f7de3 0%, #346ff3 46%, #f08a52 100%);
+      radial-gradient(circle at 28% 24%, rgba(255, 255, 255, 0.92), transparent 24%),
+      linear-gradient(135deg, #1a2f6b 0%, #2358c9 45%, #0ea5a4 100%);
     color: white;
     box-shadow: 0 14px 28px rgba(52, 111, 243, 0.26);
   }
@@ -248,7 +287,7 @@ const clientExample = {
     top: 62%;
     left: 8%;
     z-index: 2;
-    width: min(13rem, 46vw);
+    width: min(15.25rem, 52vw);
     animation: brand-card-travel 7.6s cubic-bezier(0.65, 0, 0.2, 1) infinite;
   }
 
@@ -295,12 +334,13 @@ const clientExample = {
   }
 
   .brand-transition__face--source {
+    grid-template-columns: 4rem 1fr;
     animation: brand-face-source 7.6s linear infinite;
   }
 
   .brand-transition__face--target {
     opacity: 0;
-    grid-template-columns: 3rem 1fr;
+    grid-template-columns: 4rem 1fr;
     animation: brand-face-target 7.6s linear infinite;
   }
 
@@ -309,7 +349,7 @@ const clientExample = {
   }
 
   .brand-transition__face--target .brand-transition__app-title {
-    font-size: 0.92rem;
+    font-size: 0.98rem;
   }
 
   .brand-transition__app-copy {
@@ -475,8 +515,26 @@ const clientExample = {
       height: 2.65rem;
     }
 
+    .brand-transition__dock-icon--source-tile,
+    .brand-transition__app-icon--source-tile,
+    .brand-transition__dock-icon--logo-tile,
+    .brand-transition__app-icon--logo-tile {
+      width: 3.45rem;
+      height: 3.45rem;
+    }
+
+    .brand-transition__dock-icon--source-tile,
+    .brand-transition__app-icon--source-tile {
+      border-radius: 1.05rem;
+    }
+
     .brand-transition__card-wrap {
-      width: min(12rem, 48vw);
+      width: min(13.2rem, 54vw);
+    }
+
+    .brand-transition__face--source,
+    .brand-transition__face--target {
+      grid-template-columns: 3.45rem 1fr;
     }
 
     @keyframes brand-card-travel {
@@ -502,6 +560,7 @@ const clientExample = {
 
   @media (max-width: 720px) {
     .brand-transition {
+      margin-top: 2.5rem;
       padding: 0.15rem 0 0.7rem;
     }
 
@@ -568,10 +627,24 @@ const clientExample = {
       border-radius: 0.72rem;
     }
 
+    .brand-transition__dock-icon--source-tile,
+    .brand-transition__app-icon--source-tile,
+    .brand-transition__dock-icon--logo-tile,
+    .brand-transition__app-icon--logo-tile {
+      width: 2.8rem;
+      height: 2.8rem;
+      border-radius: 0.82rem;
+    }
+
+    .brand-transition__dock-icon--source-tile,
+    .brand-transition__app-icon--source-tile {
+      border-radius: 0.95rem;
+    }
+
     .brand-transition__card-wrap {
       top: 1.25rem;
       left: 0.25rem;
-      width: min(10.8rem, calc(100% - 1.8rem));
+      width: min(12.1rem, calc(100% - 1.6rem));
     }
 
     .brand-transition__card {
@@ -584,12 +657,13 @@ const clientExample = {
       padding: 0.58rem;
     }
 
+    .brand-transition__face--source,
     .brand-transition__face--target {
-      grid-template-columns: 2.3rem 1fr;
+      grid-template-columns: 2.8rem 1fr;
     }
 
     .brand-transition__face--target .brand-transition__app-title {
-      font-size: 0.78rem;
+      font-size: 0.84rem;
     }
 
     .brand-transition__signal {

@@ -1,42 +1,65 @@
 ---
 interface Props {
   label: string;
-  title: string;
-  items: string[];
+  title?: string;
+  items?: string[];
   action?: string;
   theme?: 'light' | 'dark';
   tone?: 'brand' | 'field' | 'accent';
   tilt?: 'left' | 'right' | 'none';
+  asset?: {
+    src: string;
+    alt: string;
+    frame?: 'none' | 'screen';
+    fit?: 'contain' | 'cover';
+  };
 }
 
 const {
   label,
   title,
-  items,
+  items = [],
   action,
   theme = 'light',
   tone = 'brand',
   tilt = 'none',
+  asset,
 } = Astro.props;
+
+const assetFit = asset?.fit ?? 'contain';
+const usesStandaloneAsset = asset?.frame === 'none';
 ---
 
-<div class={`phone-mockup phone-mockup--${theme} phone-mockup--${tone} phone-mockup--${tilt}`} aria-label={label}>
-  <div class="phone-mockup__shell">
-    <div class="phone-mockup__notch" aria-hidden="true"></div>
-    <div class="phone-mockup__screen">
-      <p class="phone-mockup__label">{label}</p>
-      <h3>{title}</h3>
+<div
+  class={`phone-mockup phone-mockup--${theme} phone-mockup--${tone} phone-mockup--${tilt} ${asset ? 'phone-mockup--asset' : ''} ${usesStandaloneAsset ? 'phone-mockup--frame-none' : ''}`}
+  aria-label={asset?.alt ?? label}
+>
+  {usesStandaloneAsset ? (
+    <img class={`phone-mockup__asset phone-mockup__asset--${assetFit}`} src={asset?.src} alt={asset?.alt ?? label} loading="lazy" decoding="async" />
+  ) : (
+    <div class="phone-mockup__shell">
+      <div class="phone-mockup__notch" aria-hidden="true"></div>
+      <div class={`phone-mockup__screen ${asset ? 'phone-mockup__screen--asset' : ''}`}>
+        {asset ? (
+          <img class={`phone-mockup__asset phone-mockup__asset--${assetFit}`} src={asset.src} alt={asset.alt} loading="lazy" decoding="async" />
+        ) : (
+          <>
+            <p class="phone-mockup__label">{label}</p>
+            {title && <h3>{title}</h3>}
 
-      <div class="phone-mockup__rows">
-        {items.map((item) => (
-          <div class="phone-mockup__row">
-            <span class="phone-mockup__row-dot" aria-hidden="true"></span>
-            <span>{item}</span>
-          </div>
-        ))}
+            <div class="phone-mockup__rows">
+              {items.map((item) => (
+                <div class="phone-mockup__row">
+                  <span class="phone-mockup__row-dot" aria-hidden="true"></span>
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+
+            {action && <div class="phone-mockup__action">{action}</div>}
+          </>
+        )}
       </div>
-
-      {action && <div class="phone-mockup__action">{action}</div>}
     </div>
-  </div>
+  )}
 </div>

@@ -45,12 +45,18 @@ export type ResultCard = {
 
 export type PreviewMockup = {
   label: string;
-  title: string;
-  items: string[];
+  title?: string;
+  items?: string[];
   action?: string;
   theme?: 'light' | 'dark';
   tone?: 'brand' | 'field' | 'accent';
   tilt?: 'left' | 'right' | 'none';
+  asset?: {
+    src: string;
+    alt: string;
+    frame?: 'none' | 'screen';
+    fit?: 'contain' | 'cover';
+  };
 };
 
 export type FeatureSection = {
@@ -96,6 +102,13 @@ const withBase = (path: string) => {
   return hash ? `${resolved}#${hash}` : resolved;
 };
 
+const mockupAsset = (fileName: string, alt: string, fit: 'contain' | 'cover' = 'contain'): NonNullable<PreviewMockup['asset']> => ({
+  src: `/mockups/${encodeURIComponent(fileName)}`,
+  alt,
+  frame: 'none',
+  fit,
+});
+
 export const siteMeta = {
   name: 'HuddleWay',
   title: 'HuddleWay | Branded Family App for Sports Programs',
@@ -103,6 +116,9 @@ export const siteMeta = {
     'HuddleWay gives sports programs a branded family app for schedules, registration, payments, and updates, plus built-in tools to manage pages, events, and program details.',
   footerBlurb:
     'A real app your program can make its own, with built-in tools that help your team save time and keep families on one clear path.',
+  previewNoticeLabel: 'Product preview',
+  previewNotice:
+    'HuddleWay is still under development. App screens and mockups shown throughout this site reflect current builds and are subject to change.',
 };
 
 export const navigation: Link[] = [
@@ -151,21 +167,17 @@ export const homePage = {
   heroVisuals: [
     {
       label: 'Family view',
-      title: 'Find your program',
-      items: ['Search once', 'Save one app', 'See next step'],
-      action: 'Join your team',
       theme: 'light',
       tone: 'brand',
-      tilt: 'left',
+      tilt: 'none',
+      asset: mockupAsset('Onboarding old.png', 'Program selection screen on an angled phone render.'),
     },
     {
       label: 'Program app',
-      title: 'Summer Club Tryouts',
-      items: ['Register now', 'Check schedule', 'See roster'],
-      action: 'Open app',
       theme: 'dark',
       tone: 'accent',
-      tilt: 'right',
+      tilt: 'none',
+      asset: mockupAsset('Consumer App Hero Homepage.png', 'Branded HuddleWay landing screen with registration open.'),
     },
   ] satisfies PreviewMockup[],
   results: {
@@ -210,6 +222,13 @@ export const homePage = {
       },
     ] satisfies Step[],
   },
+  stepsVisual: {
+    label: 'Registration preview',
+    theme: 'dark',
+    tone: 'accent',
+    tilt: 'none',
+    asset: mockupAsset('Registration Page.png', 'Hand-held registration form screen inside the HuddleWay app.'),
+  } satisfies PreviewMockup,
   showcase: {
     title: 'See the app your families will actually use',
     body: 'Families open your program app to check schedules, updates, and registration in one place.',
@@ -230,12 +249,10 @@ export const homePage = {
     note: 'A real app for families. Easier to run for your team.',
     mockup: {
       label: 'Branded club app',
-      title: 'Eagle Select',
-      items: ['Schedule', 'Roster', 'Register', 'Pay online'],
-      action: 'Open today',
       theme: 'dark',
       tone: 'field',
       tilt: 'none',
+      asset: mockupAsset('Why Choose Us Component.png', 'Family-facing HuddleWay home screen with featured program highlights.'),
     } satisfies PreviewMockup,
   },
   cta: {
@@ -288,12 +305,10 @@ export const featuresPage = {
     badges: ['Family view', 'Less confusion'],
     mockup: {
       label: 'Family app view',
-      title: 'Club Season',
-      items: ['Program page', 'Register now', 'Latest updates'],
-      action: 'View details',
       theme: 'dark',
       tone: 'brand',
       tilt: 'none',
+      asset: mockupAsset('Consumer App Hero Homepage.png', 'Branded HuddleWay family app home screen.'),
     } satisfies PreviewMockup,
   },
   indexLinks: [
@@ -321,12 +336,10 @@ export const featuresPage = {
       ],
       mockup: {
         label: 'Program overview',
-        title: 'Fall Season',
-        items: ['Dates and fees', 'Location details', 'Register next'],
-        action: 'View program',
         theme: 'light',
         tone: 'brand',
         tilt: 'none',
+        asset: mockupAsset('Team Setup Page Huddleway.png', 'Program setup dashboard for team pages and labels.'),
       },
     },
     {
@@ -346,12 +359,10 @@ export const featuresPage = {
       ],
       mockup: {
         label: 'Schedule view',
-        title: 'This week',
-        items: ['Tuesday practice', 'Field update', 'Saturday game'],
-        action: 'Open schedule',
         theme: 'dark',
         tone: 'field',
         tilt: 'none',
+        asset: mockupAsset('Coaching Staff Component.png', 'Family-facing coaching staff and upcoming events screen.'),
       },
     },
     {
@@ -371,12 +382,10 @@ export const featuresPage = {
       ],
       mockup: {
         label: 'Registration flow',
-        title: 'Join the program',
-        items: ['Review details', 'Register here', 'Complete payment'],
-        action: 'Start signup',
         theme: 'light',
         tone: 'accent',
         tilt: 'none',
+        asset: mockupAsset('Registration Page.png', 'Hand-held registration flow screen for player signup.'),
       },
     },
     {
@@ -396,12 +405,10 @@ export const featuresPage = {
       ],
       mockup: {
         label: 'Updates feed',
-        title: 'Latest notice',
-        items: ['Practice moved', 'Reminder posted', 'New team note'],
-        action: 'Read updates',
         theme: 'dark',
         tone: 'brand',
         tilt: 'none',
+        asset: mockupAsset('Example Registeree.png', 'Registrant detail sheet with message, email, and call actions.'),
       },
     },
     {
@@ -421,12 +428,10 @@ export const featuresPage = {
       ],
       mockup: {
         label: 'Branded app',
-        title: 'Club identity',
-        items: ['Your logo', 'Your colors', 'Your family app'],
-        action: 'Open your app',
         theme: 'light',
         tone: 'brand',
         tilt: 'none',
+        asset: mockupAsset('Select Team Colors.png', 'Hand-held team color selection screen for brand customization.'),
       },
     },
   ] satisfies FeatureSection[],
@@ -492,6 +497,13 @@ export const savingsPage = {
       },
     ] satisfies CompareItem[],
   },
+  comparisonVisual: {
+    label: 'Admin staff workflow',
+    theme: 'dark',
+    tone: 'field',
+    tilt: 'none',
+    asset: mockupAsset('Admin Staff management page.png', 'Angled admin staff management screen for team operations.'),
+  } satisfies PreviewMockup,
   spotlight: {
     eyebrow: 'See It In Practice',
     title: 'Built to lighten the load.',
@@ -500,12 +512,10 @@ export const savingsPage = {
     badges: ['Team tools', 'Family path'],
     mockup: {
       label: 'Team view',
-      title: 'Season dashboard',
-      items: ['Post update', 'Check signup flow', 'Review schedule'],
-      action: 'Run the day',
       theme: 'dark',
       tone: 'field',
       tilt: 'none',
+      asset: mockupAsset('Staff Page Admin.png', 'Admin staff management screen for multi-team coordination.'),
     } satisfies PreviewMockup,
   },
   timeBack: {
@@ -611,12 +621,10 @@ export const setupFaqPage = {
     ],
     mockup: {
       label: 'Illustrative club app',
-      title: 'Eagle Select',
-      items: ['Check schedule', 'See team updates', 'Register here'],
-      action: 'Open club app',
       theme: 'dark',
       tone: 'brand',
       tilt: 'none',
+      asset: mockupAsset('Select Team Colors.png', 'Hand-held team color editor showing branded app customization.'),
     } satisfies PreviewMockup,
   },
   audiencesIntro: {

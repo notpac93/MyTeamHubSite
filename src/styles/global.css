@@ -136,6 +136,38 @@ h3 {
   min-height: 5rem;
 }
 
+.site-notice {
+  width: var(--content);
+  margin: 0 auto;
+}
+
+.site-notice__inner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding: 0.85rem 1rem;
+  border-radius: 0 0 1.1rem 1.1rem;
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(23, 31, 46, 0.08);
+  border-top: 0;
+  box-shadow: 0 18px 42px rgba(23, 31, 46, 0.05);
+}
+
+.site-notice__label {
+  color: var(--brand-deep);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.site-notice__text {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+}
+
 .brand {
   display: inline-flex;
   align-items: center;
@@ -400,6 +432,9 @@ h3 {
 
 .hero__device {
   position: relative;
+  display: grid;
+  justify-items: center;
+  padding-inline: clamp(0.35rem, 0.8vw, 0.9rem);
 }
 
 .hero__device--left {
@@ -472,6 +507,22 @@ h3 {
 .showcase-layout {
   display: grid;
   gap: 1.5rem;
+}
+
+.process-showcase {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.65fr);
+  gap: 2rem;
+  align-items: center;
+}
+
+.process-showcase__visual {
+  display: grid;
+  justify-items: center;
+}
+
+.process-showcase__visual .phone-mockup {
+  width: min(26rem, 100%);
 }
 
 .result-grid,
@@ -640,6 +691,7 @@ h3 {
   display: grid;
   place-items: center;
   min-height: 36rem;
+  padding-inline: clamp(0.35rem, 0.8vw, 0.9rem);
 }
 
 .showcase__badge {
@@ -670,6 +722,10 @@ h3 {
   filter: drop-shadow(0 24px 40px rgba(12, 22, 36, 0.25));
 }
 
+.phone-mockup--asset {
+  width: min(20rem, 100%);
+}
+
 .phone-mockup--left {
   transform: rotate(-15deg);
 }
@@ -680,6 +736,12 @@ h3 {
 
 .phone-mockup--none {
   width: min(19rem, 100%);
+}
+
+.phone-mockup--frame-none {
+  width: min(19.5rem, 100%);
+  max-width: 100%;
+  margin-inline: auto;
 }
 
 .phone-mockup__shell {
@@ -708,6 +770,14 @@ h3 {
   border-radius: 1.8rem;
   display: grid;
   gap: 1rem;
+}
+
+.phone-mockup__screen--asset {
+  min-height: 28rem;
+  padding: 0;
+  overflow: hidden;
+  display: block;
+  background: #0f1520;
 }
 
 .phone-mockup--light .phone-mockup__screen {
@@ -787,6 +857,30 @@ h3 {
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 255, 255, 0.08);
   color: rgba(255, 255, 255, 0.92);
+}
+
+.phone-mockup__asset {
+  display: block;
+  width: 100%;
+  border-radius: clamp(1.1rem, 2.6vw, 1.7rem);
+}
+
+.phone-mockup__screen--asset .phone-mockup__asset {
+  height: 100%;
+  min-height: 28rem;
+}
+
+.phone-mockup--frame-none .phone-mockup__asset {
+  height: auto;
+  max-height: 31rem;
+}
+
+.phone-mockup__asset--contain {
+  object-fit: contain;
+}
+
+.phone-mockup__asset--cover {
+  object-fit: cover;
 }
 
 .summary-strip {
@@ -1198,6 +1292,7 @@ h3 {
   justify-items: start;
   min-height: 0;
   padding: 0.2rem 0 0;
+  padding-inline: clamp(0.35rem, 0.8vw, 0.9rem);
 }
 
 .feature-block__visual .phone-mockup {
@@ -1265,6 +1360,22 @@ h3 {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.6rem;
+}
+
+.compare-shell--showcase {
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, 22rem) minmax(0, 1fr);
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.compare-visual {
+  display: grid;
+  justify-items: center;
+  align-self: center;
+}
+
+.compare-visual .phone-mockup {
+  width: min(22rem, 100%);
 }
 
 .compare-column {
@@ -1421,6 +1532,7 @@ h3 {
   display: grid;
   place-items: center;
   min-height: 28rem;
+  padding-inline: clamp(0.35rem, 0.8vw, 0.9rem);
 }
 
 .visual-break__badge {
@@ -1671,6 +1783,22 @@ h3 {
   display: grid;
   place-items: center;
   min-height: 100%;
+  padding-inline: clamp(0.35rem, 0.8vw, 0.9rem);
+}
+
+.process-showcase__visual,
+.compare-visual {
+  padding-inline: clamp(0.35rem, 0.8vw, 0.9rem);
+}
+
+.hero__device .phone-mockup--frame-none,
+.showcase__visual .phone-mockup--frame-none,
+.visual-break__visual .phone-mockup--frame-none,
+.feature-block__visual .phone-mockup--frame-none,
+.setup-example__visual .phone-mockup--frame-none,
+.process-showcase__visual .phone-mockup--frame-none,
+.compare-visual .phone-mockup--frame-none {
+  width: min(100%, 19rem);
 }
 
 .page--setup-faq .section-intro h2,
@@ -2190,6 +2318,18 @@ h3 {
     gap: 1rem;
   }
 
+
+  .process-showcase {
+    grid-template-columns: 1fr;
+  }
+
+  .process-showcase__visual {
+    order: -1;
+  }
+
+  .process-showcase__visual .phone-mockup {
+    width: min(22rem, 100%);
+  }
   .page--home .result-card {
     position: relative;
     isolation: isolate;
@@ -2293,6 +2433,19 @@ h3 {
     gap: 1rem;
   }
 
+  .process-showcase {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .process-showcase__visual {
+    order: -1;
+  }
+
+  .process-showcase__visual .phone-mockup {
+    width: min(18rem, 100%);
+  }
+
   .page--home .process-card {
     position: relative;
     isolation: isolate;
@@ -2373,6 +2526,19 @@ h3 {
   .cta-banner,
   .site-footer__grid {
     padding-inline: 1rem;
+  }
+
+  .compare-shell--showcase {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .compare-visual {
+    order: -1;
+  }
+
+  .compare-visual .phone-mockup {
+    width: min(18rem, 100%);
   }
 
   .site-header__inner {
